@@ -1,0 +1,38 @@
+.deck {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.console {
+    width: 40%;
+    max-height: 20dvh;
+    min-height: 5dvh;
+    border: solid 1mm black;
+    margin-top: 4dvh;
+    padding: 0;
+    overflow-x: none;
+    overflow-y: scroll;
+}
+
+.end-turn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.console-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#output {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5mm;
+    margin: 0;
+    padding: 0;
+}

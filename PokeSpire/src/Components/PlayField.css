@@ -1,0 +1,9 @@
+.play-pen{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.play-pen div{
+    font-size: 10mm;
+}
