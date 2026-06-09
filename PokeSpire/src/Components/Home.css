@@ -1,0 +1,11 @@
+.card-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dropdown-deck {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

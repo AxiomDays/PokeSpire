@@ -1,4 +1,4 @@
-.card-box {
+.card-box-reward {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -6,16 +6,8 @@
     border-radius: 3mm;
     padding: 1dvw;
     background-color: gainsboro;
-    height: 30dvh;
 }
 
-.card-details {
+.card-details-reward {
     font-size: 20px;
-    text-align: center;
-    height: 20dvh;
-}
-
-.desc-cadeaux {
-    font-size: 0.85rem;
-    text-align: center;
 }

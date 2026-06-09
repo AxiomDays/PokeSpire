@@ -3,22 +3,44 @@
 //implement STR mechnic (X)
 //add poison and blind (X)
 //item cards like tcg(X)
-//capture mechanic
-//ability to see enemy nxt move
-//STAB???
-//game over
+//capture mechanic - storage needed
+//ability to see enemy nxt move (X)
+//STAB???(X)
+//game over(X)
 //save deck/status in local.storage
 
 //weakness, vulnerable, exalted,(X)
-//poison, paralyze on cards [limited draw?]()
-//burn on card use
+//poison, paralyze on cards [limited draw?](untested)
+//burn on card use(untested)
 //weather on map node
 
 //victory reward scr
 //map
 //intro and select screen
-// shop
+// relics
+// shop 
 //local storage
+
+//stab(x)
+//next move(x)
+//victory(x)
+//gameover(x)
+// set up a page to test player and deck creation
+//button to recreate char and deck, and button to go to battle menus
+//test relics
+//attempt saving
+
+
+
+//nerf enemy damage and make player hp carry over
+//nerf type damage boost and STAB effectiveness
+//cards not showing scaled damage
+//check if you swapped sdef and def in ohp initialization
+//give elemental moves unique names and not just type names
+//fix debug cards and enemies
+//implement relics properly
+//modify card description
+//implement card type change and delete
 
 document.addEventListener("DOMContentLoaded", () => {
 	let output = document.getElementById("output");
@@ -27,9 +49,14 @@ document.addEventListener("DOMContentLoaded", () => {
 	}
 });
 
-const getRandomNumber = (min, max) => {
-	return Math.random() * (max - min) + min;
+export const getRandomNumber = (min, max) => {
+	return Math.floor(Math.random() * (max - min) + min);
 };
+
+export const takeRandomFromArray = (arr) => {
+	let rand = Math.floor(getRandomNumber(0, arr.length));
+	return arr[rand];
+}
 
 function shuffleArray(array) {
 	for (var i = array.length - 1; i > 0; i--) {
@@ -39,6 +66,53 @@ function shuffleArray(array) {
 		array[j] = temp;
 	}
 	return array;
+}
+
+export function skillNametoMoveName(name) {
+	switch (name) {
+		case "strike":
+			return `Strike`;
+			break;
+		case "shield":
+			return `Defend`;
+			break;
+		case "potion":
+			return `Potion`;
+			break;
+		case "flash":
+			return `Hidden Power`;
+			break;
+		case "heal":
+			return `Slack Off`;
+			break;
+		case "normal":
+			return `Deals ${value} damage to target. Heals ${defValue} to self`;
+			break;
+		case "fire":
+			return `Flamethrower`;
+			break;
+		case "water":
+			return `Surf`;
+			break;
+		case "grass":
+			return `Leaf Blade`;
+			break;
+		case "bug":
+			return `Harden`;
+			break;
+		case "fighting":
+			return `Max Knuckle`;
+			break;
+		case "dark":
+			return `Crunch`;
+			break;
+		case "poison":
+			return `Toxic`;
+			break;
+		default:
+			return ``;
+			break;
+	}
 }
 
 function typeCheck(atkType, defType) {
@@ -214,7 +288,17 @@ function say(nom, txt) {
 	output.innerHTML += nom + " " + txt;
 }
 
-class GameController {
+function victoryLap(player) {
+	console.log("you won");
+	player.reset()
+}
+
+function gameOver() {
+	console.log("thats rough buddy")
+	player.reset()
+}
+
+export class GameController {
 	constructor(player, enem, deck) {
 		this.player = player;
 		this.enem = enem;
@@ -254,10 +338,11 @@ class GameController {
 		console.log("eenem boosts", enem.boosts);
 	}
 
-	endTurn() {
-		if (this.enem.HP == 0) {
+	endTurn(pokemon) {
+		if (this.enem.HP <= 0) {
 			this.gameState = "WIN";
-			victoryLap();
+			victoryLap(pokemon);
+
 		} else {
 			this.gameState = "RETALIATION";
 			console.log("turn ended");
@@ -271,7 +356,7 @@ class GameController {
 					say(player.name, "is poisoned!");
 					target.take(target.DOTval);
 				}
-				player.OHP = 0;
+				this.player.OHP = 0;
 			}, 2000);
 			player.evolve(this.deck.evoRemainderandFleetingRemoval());
 			this.deck.createHand();
@@ -282,17 +367,17 @@ class GameController {
 	handleRetaliate() {
 		if (this.gameState != "RETALIATION") return;
 		this.enem.retaliate(this.player);
-		console.log("retaliation in game controller hit");
-		if (this.player.HP == 0) {
-			this.gameState = "LOSS";
-		}
 		this.gameState = "INTRODUCTION";
+		if (this.player.HP <= 0) {
+			this.gameState = "LOSS";
+			gameOver()
+		}
 	}
 }
 
 export class Card {
 	constructor(type, skill, value, cost, genre = "move") {
-		//le genre est le type de le card (attaque ou une iteme), pas ce melangez avec des types de pokemon
+		//le genre est le type de le card (une attaque ou une iteme), ne le melangez pas avec des types de pokemon
 		this.type = type;
 		this.genre = genre;
 		this.skill = skill;
@@ -301,12 +386,17 @@ export class Card {
 		this.DefValue = value / 2;
 		this.hasPlayed = false;
 		this.fleeting = false;
+		this.desc = cardDescription(this.skill, this.value, this.DefValue);
+	}
+
+	changeType(newType) {
+		this.type = newType
 	}
 
 	play(target, self) {
 		let outputVal = this.value;
-		if (self.mana < this.cost) return;
-		if (this.hasPlayed) return;
+		if (self.mana < this.cost) { console.log("not enough mana"); return };
+		if (this.hasPlayed) { console.log("already played"); return };
 		if (self.signedSTR != 0) {
 			outputVal += self.signedSTR;
 		}
@@ -315,16 +405,29 @@ export class Card {
 			this.value *= 0.75;
 		}
 
+		if (self.boosts.find((arr) => arr.includes("burn"))) {
+			say(self.name, "is burning!");
+			self.take(self.MaxHP / 50)
+		}
+
+		if (self.boosts.find((arr) => arr.includes("paralyze"))) {
+			say(self.name, "is paralyzed and can't move");
+			self.mana -= this.cost;
+			this.hasPlayed = true;
+			return
+		}
+
+
 		if (this.genre == "move") {
 			switch (this.skill) {
 				case "strike":
-					target.take(outputVal, this.type);
+					target.take(outputVal * self.strikeScaling[1], this.type);
 					break;
 				case "shield":
-					self.OSheal(this.DefValue, this.type);
+					self.OSheal(this.DefValue * self.defScaling[1], this.type);
 					break;
 				case "flash":
-					target.take(outputVal, this.type);
+					target.take(outputVal * self.flashScaling[1], this.type);
 					break;
 				case "heal":
 					self.heal(this.DefValue, this.type);
@@ -351,28 +454,53 @@ export class Card {
 	}
 }
 
+export class Relic {
+	constructor(type, value, name, cost) {
+		this.name = type == "gold" ? "Money" : name
+		this.type = type
+		this.cost = cost
+		this.value = value
+	}
+
+	addRelic(self) {
+		if (this.type == "gold") {
+			self.gold += this.value
+			console.log("cash money added")
+		} else {
+			if (!self.relicList.includes(this.name)) {
+				self.relicList.push(this.name)
+				console.log("relic added !?", self.relicList)
+			} else {
+				self.gold += this.cost
+			}
+		}
+	}
+
+}
+
 export class Deck {
 	constructor(cards) {
 		this.cards = [
-			new Card("", "strike", 20, 1),
-			new Card("", "strike", 20, 1),
-			new Card("normal", "potion", 20, 2, "item"),
+			new Card("", "strike", 200, 1),
+			new Card("", "strike", 200, 1),
+			new Card("", "potion", 20, 2, "item"),
 			new Card("", "shield", 20, 3),
 			new Card("", "shield", 20, 4),
-			new Card("normal", "potion", 20, 2, "item"),
-			new Card("normal", "potion", 20, 2, "item"),
-			new Card("normal", "potion", 20, 2, "item"),
+			new Card("", "potion", 20, 2, "item"),
+			new Card("", "potion", 20, 2, "item"),
+			new Card("", "potion", 20, 2, "item"),
 			new Card("flying", "flash", 20, 3),
 			new Card("fighting", "fighting", 20, 5),
-			new Card("bug", "bug", 20, 4),
-			new Card("fire", "fire", 20, 2),
+			new Card("bug", "flash", 20, 4),
+			new Card("water", "water", 20, 2),
+			new Card("water", "flash", 20, 2),
 			new Card("dark", "dark", 20, 3),
 		];
 		this.hand = [];
 		this.discardPile = [];
 		this.shuffledCards = [];
 		this.maxCardLimit = this.cards.length;
-		let macroHand = this.cards;
+		let macroHand = [...this.cards];
 		this.shuffledCards = shuffleArray(macroHand);
 	}
 
@@ -500,24 +628,42 @@ export class Unit {
 			this.OHP = 0;
 			this.HP += negatifRemainder;
 		}
-		console.log(this.name + " took " + value + " damage");
-		output.innerHTML += this.name + " took " + value + " damage" + "<br/>";
+		console.log(this.name + " took " + Math.round(value) + " damage");
+		output.innerHTML += this.name + " took " + Math.round(value) + " damage" + "<br/>";
 	}
 }
 
 export class Player extends Unit {
-	constructor(name, type, HP, OHP, MaxHP, evo, maxevo, mana, maxmana) {
+	constructor(name, type, HP, OHP, MaxHP, evo, maxevo, strikeScaling, flashScaling, defScaling) {
 		super(name, type, HP, OHP, MaxHP);
 		this.evo = evo;
 		this.maxevo = maxevo;
-		this.mana = mana;
-		this.maxmana = maxmana;
+		this.mana = 6;
+		this.maxmana = 6;
+		this.gold = 0;
+		this.relicList = [];
+		this.strikeScaling = strikeScaling;
+		this.flashScaling = flashScaling;
+		this.defScaling = defScaling;
 	}
 
 	evolve(XP) {
 		this.evo += XP;
 		if (this.evo >= this.maxevo) this.evo -= this.maxevo;
 		console.log("evolve");
+	}
+
+	reset() {
+		this.HP = this.MaxHP
+		this.OHP = 0
+		this.mana = this.maxmana
+		this.evo = 0
+		this.signedSTR = 0;
+		this.boosts = [];
+		this.DOTval = 0;
+		this.BURNval = 0;
+		console.log("reset the player")
+
 	}
 
 	get vals() {
@@ -529,12 +675,19 @@ export class Enem extends Unit {
 	constructor(name, type, HP, OHP, MaxHP, movelist) {
 		super(name, type, HP, OHP, MaxHP);
 		this.movelist = movelist;
+		this.startingMove = (this.movelist && this.movelist.length > 0)
+			? this.formulateRetaliate()
+			: null;
+	}
+
+	formulateRetaliate() {
+		let rand = Math.floor(getRandomNumber(0, this.movelist.length));
+		return [this.movelist[rand][0], this.movelist[rand][1]]
 	}
 
 	retaliate(target) {
-		let rand = Math.floor(getRandomNumber(0, this.movelist.length));
-		console.log(rand);
-		this.doMove(this.movelist[rand][0], this.movelist[rand][1], target);
+		this.doMove(this.startingMove[0], this.startingMove[1], target);
+		this.startingMove = this.formulateRetaliate()
 	}
 
 	doMove(atk, value, target) {
@@ -559,8 +712,21 @@ export class Enem extends Unit {
 		this.gameState = "INTRODUCTION";
 	}
 
+	reset() {
+		this.HP = this.MaxHP
+		this.OHP = 0
+		this.mana = this.maxmana
+		this.evo = 0
+		this.signedSTR = 0;
+		this.boosts = [];
+		this.DOTval = 0;
+		this.BURNval = 0;
+		console.log("reset the enemy")
+
+	}
+
 	get vals() {
-		return [this.name, this.type, this.HP, this.MaxHP, this.OHP, this.MaxOHP];
+		return [this.name, this.type, this.HP, this.MaxHP, this.OHP, this.MaxOHP, this.startingMove];
 	}
 }
 
@@ -582,6 +748,10 @@ function itemCheck(self, target, type, skill, value, defvalue) {
 }
 
 function skillCheck(self, target, type, skill, value, defvalue) {
+	if (self.type.includes(type)) {
+		console.log("SAME TYPE ATTACK BONUS")
+		value *= 1.5
+	}
 	switch (skill) {
 		case "normal":
 			target.take(value, type);
@@ -616,7 +786,7 @@ function skillCheck(self, target, type, skill, value, defvalue) {
 	}
 }
 
-export const player = new Player(
+export let player = new Player(
 	"Ryu",
 	["normal", "water"],
 	45,
@@ -627,9 +797,18 @@ export const player = new Player(
 	6,
 	6,
 );
-export const enem = new Enem("Guile", ["fire", "water"], 150, 10, 45, [
-	["strike", 20],
-]);
-export const deck = new Deck();
-export const game = new GameController(player, enem, deck);
-deck.createHand();
+
+export let deck = new Deck();
+let enem = new Enem();
+export let game = new GameController(player, enem, deck);
+
+
+export function GameStart(player, enem, deck) {
+	game.player = player
+	game.enem = enem
+	game.deck = deck
+	game.gameState = "INTRODUCTION"
+	deck.createHand()
+	console.log("game start function entered?")
+}
+

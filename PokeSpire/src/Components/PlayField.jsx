@@ -15,6 +15,7 @@ function PlayField({
 	eSHD,
 	pMana,
 	pEvo,
+	enemMove
 }) {
 	const [count, setCount] = useState(0);
 
@@ -27,6 +28,7 @@ function PlayField({
 					</div>
 					<div className="right-enemy">
 						{ename} {eHP}/{eMaxHP} `[{eSHD}]`
+						<span>{enemMove}</span>
 					</div>
 				</div>
 			</div>
