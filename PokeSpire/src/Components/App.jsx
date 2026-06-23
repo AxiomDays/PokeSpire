@@ -5,7 +5,7 @@ import "./App.css";
 import PlayField from "./PlayField";
 import Hand from "./Hand";
 
-function App({ changeStateFunc, pokemon, deck, game }) {
+function App({ changeStateFunc, pokemon, deck, game, map }) {
 	const [pName, setpName] = useState(game.player.name);
 	const [pHP, setpHP] = useState(game.player.HP);
 	const [pOHP, setpOHP] = useState(game.player.OHP);
@@ -50,7 +50,7 @@ function App({ changeStateFunc, pokemon, deck, game }) {
 					pEvo={pEvo}
 					enemMove={enemMove}
 				/>
-				<Hand update={updateVals} changeStateFunc={changeStateFunc} deck={deck} game={game} pokemon={pokemon} />
+				<Hand update={updateVals} changeStateFunc={changeStateFunc} map={map} deck={deck} game={game} pokemon={pokemon} />
 			</div>
 		</>
 	);

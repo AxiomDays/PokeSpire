@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { game, player, deck } from "../../models";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
 import "./Home.css";
@@ -21,7 +20,7 @@ function Home({ changeStateFunc, player, deck, game }) {
                         {player.name} <br></br> {player.HP}/{player.MaxHP} `[{player.OHP}]` ({player.mana}) ({player.evo})
                     </div>
                     <button className="start-button-home col-12" onClick={() => { changeStateFunc(1) }}>START</button>
-                    <Decklist deck={deck} player={player} />
+                    <Decklist deck={deck} player={player} isDeleting={false} />
                 </div>
             </div>
         </>

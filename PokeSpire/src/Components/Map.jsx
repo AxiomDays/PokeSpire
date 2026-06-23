@@ -8,15 +8,39 @@ import { rewards } from "../../data"
 import CadeuxReward from "./CadeuxReward.jsx";
 
 
-function Map({ changeStateFunc, map, player, deck, game, gamestart }) {
+function Map({ changeStateFunc, map, player, deck, game, gamestart, changeEvent }) {
 	const [stage, setStage] = useState(map.currentStage);
 
-	const swapToFight = (enemy) => {
-		console.log("enemy: ", enemy)
-		changeStateFunc(0)
-		enemy.reset()
-		gamestart(player, enemy, deck)
-		setStage(map.advance())
+	const swapToScene = (sceneType, content, isEventBattle = false) => {
+		switch (sceneType) {
+			case "fight":
+				changeStateFunc(0)
+				break
+			case "legendary":
+				changeStateFunc(0)
+				break
+			case "store":
+				changeStateFunc(4)
+				break
+			case "event":
+				changeEvent(content)
+				changeStateFunc(5)
+				break
+			case "pokecenter":
+				changeStateFunc(6)
+				break
+			case "chest":
+				changeEvent(content)
+				changeStateFunc(7)
+				break
+		}
+		if (content.constructor.name == "Enem") {
+			content.reset()
+			gamestart(player, content, deck)
+		}
+		if (!isEventBattle) {
+			setStage(map.advance())
+		}
 	}
 
 	const rewardGet = (reward) => {
@@ -29,13 +53,14 @@ function Map({ changeStateFunc, map, player, deck, game, gamestart }) {
 			reward.addRelic(player)
 		}
 		changeStateFunc(2);
+		map.currentStage = 0
 	}
 
 	function createMap() {
 		let seg = []
 		map.segments[stage].forEach((scene) => {
 			seg.push(
-				<button className="scene-btn col-12" onClick={() => swapToFight(scene.enemy)}>{scene.type}</button>
+				<button className="scene-btn col-12" onClick={() => swapToScene(scene.type, scene.content)}>{scene.type}</button>
 			)
 		})
 		return seg

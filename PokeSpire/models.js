@@ -3,7 +3,7 @@
 //implement STR mechnic (X)
 //add poison and blind (X)
 //item cards like tcg(X)
-//capture mechanic - storage needed
+//capture mechanic - storage needed (more or less)
 //ability to see enemy nxt move (X)
 //STAB???(X)
 //game over(X)
@@ -25,10 +25,20 @@
 //next move(x)
 //victory(x)
 //gameover(x)
+//CREATE STORE with DElete option(untested)
 // set up a page to test player and deck creation
 //button to recreate char and deck, and button to go to battle menus
+//generate new enemy object for each fight [enemy generator function][generates segments?]
 //test relics
 //attempt saving
+
+//KEY
+//-test store [mostly]
+//-weather [scrap maybe implement later]
+//-enemy genertion + segment generator w/ boss fight
+//fake implement relics
+//poke-center [done]
+//-saving
 
 
 
@@ -36,15 +46,25 @@
 //nerf type damage boost and STAB effectiveness
 //cards not showing scaled damage
 //check if you swapped sdef and def in ohp initialization
-//give elemental moves unique names and not just type names
+//give elemental moves unique names and not just type names(partial)
 //fix debug cards and enemies
 //implement relics properly
 //modify card description
-//implement card type change and delete
+//implement card element type change and delete menu
+//give legendaries strong capture cards
+//remove hp refill per battle
+
+//create header
+//create player stat display thing
+//create footer
 
 document.addEventListener("DOMContentLoaded", () => {
 	let output = document.getElementById("output");
 	if (!output) {
+		console.error("Error: Could not find the element with ID.");
+	}
+	let consol = document.getElementById("console");
+	if (!consol) {
 		console.error("Error: Could not find the element with ID.");
 	}
 });
@@ -68,6 +88,33 @@ function shuffleArray(array) {
 	return array;
 }
 
+export const randomProperty = function (obj) {
+	var keys = Object.keys(obj);
+	return obj[keys[keys.length * Math.random() << 0]];
+};
+
+export function capture(deck, enem, pokeBallLevel) {
+	let probabilityOfCapture = 1;
+	let rand = getRandomNumber(1, 100)
+	if (enem.HP < (enem.MaxHP / 2)) {
+		let enemyCriticalHPPercentage = (((enem.MaxHP / 2) - enem.HP) / (enem.MaxHP / 2)) * 40
+		probabilityOfCapture = 30 + Math.round(enemyCriticalHPPercentage);
+		enem.boosts.forEach((boost) => { probabilityOfCapture += 10 })
+		console.log("probability is, ", probabilityOfCapture)
+		console.log("chance is, ", rand)
+	}
+	if (rand <= probabilityOfCapture) {
+		say(enem.name, "was captured successfully.");
+		deck.addCard(enem.captureCard);
+		console.log("capture card added succesfully, ", deck)
+		return true
+	} else {
+		say("", "Oh no! It didn't work!")
+		return false
+	}
+
+}
+
 export function skillNametoMoveName(name) {
 	switch (name) {
 		case "strike":
@@ -79,6 +126,9 @@ export function skillNametoMoveName(name) {
 		case "potion":
 			return `Potion`;
 			break;
+		case "pokeball":
+			return `PokeBall`;
+			break;
 		case "flash":
 			return `Hidden Power`;
 			break;
@@ -86,7 +136,7 @@ export function skillNametoMoveName(name) {
 			return `Slack Off`;
 			break;
 		case "normal":
-			return `Deals ${value} damage to target. Heals ${defValue} to self`;
+			return `Tackle`;
 			break;
 		case "fire":
 			return `Flamethrower`;
@@ -286,6 +336,7 @@ function cardDescription(type, value, defValue) {
 function say(nom, txt) {
 	console.log(nom, " ", txt);
 	output.innerHTML += nom + " " + txt;
+	output.scrollTop = output.scrollHeight;
 }
 
 function victoryLap(player) {
@@ -309,33 +360,33 @@ export class GameController {
 
 	handlePlay(card) {
 		if (this.gameState != "INTRODUCTION") return;
-		card.play(this.enem, this.player);
-		if (player.boosts.find((arr) => arr.includes("burn"))) {
-			say(player.name, "is burned!");
+		card.play(this.enem, this.player, this.deck);
+		if (this.player.boosts.find((arr) => arr.includes("burn"))) {
+			say(this.player.name, "is burned!");
 			target.take(target.BURNval);
 		}
 	}
 
 	handleStatus() {
-		player.boosts.forEach((boost) => {
+		this.player.boosts.forEach((boost) => {
 			if (boost) {
 				boost[1] -= 1;
 				if (boost[1] <= 0) {
-					player.boosts.splice(player.boosts.indexOf(boost), 1);
+					this.player.boosts.splice(this.player.boosts.indexOf(boost), 1);
 				}
 			}
 		});
-		console.log("player boosts", player.boosts);
+		console.log("player boosts", this.player.boosts);
 
-		enem.boosts.forEach((boost) => {
+		this.enem.boosts.forEach((boost) => {
 			if (boost) {
 				boost[1] -= 1;
 				if (boost[1] <= 0) {
-					enem.boosts.splice(enem.boosts.indexOf(boost), 1);
+					this.enem.boosts.splice(this.enem.boosts.indexOf(boost), 1);
 				}
 			}
 		});
-		console.log("eenem boosts", enem.boosts);
+		console.log("eenem boosts", this.enem.boosts);
 	}
 
 	endTurn(pokemon) {
@@ -352,13 +403,13 @@ export class GameController {
 				console.log("Played Phase!");
 				this.handleRetaliate();
 
-				if (player.boosts.find((arr) => arr.includes("poison"))) {
-					say(player.name, "is poisoned!");
+				if (this.player.boosts.find((arr) => arr.includes("poison"))) {
+					say(this.player.name, "is poisoned!");
 					target.take(target.DOTval);
 				}
 				this.player.OHP = 0;
 			}, 2000);
-			player.evolve(this.deck.evoRemainderandFleetingRemoval());
+			this.player.evolve(this.deck.evoRemainderandFleetingRemoval());
 			this.deck.createHand();
 			this.handleStatus();
 		}
@@ -383,6 +434,7 @@ export class Card {
 		this.skill = skill;
 		this.value = value;
 		this.cost = cost;
+		this.price = Math.floor((this.value * 2) + ((this.cost / 6) * 100))
 		this.DefValue = value / 2;
 		this.hasPlayed = false;
 		this.fleeting = false;
@@ -393,7 +445,7 @@ export class Card {
 		this.type = newType
 	}
 
-	play(target, self) {
+	play(target, self, deck) {
 		let outputVal = this.value;
 		if (self.mana < this.cost) { console.log("not enough mana"); return };
 		if (this.hasPlayed) { console.log("already played"); return };
@@ -444,21 +496,20 @@ export class Card {
 					break;
 			}
 		} else if (this.genre == "item") {
-			itemCheck(self, target, this.type, this.skill, outputVal, this.DefValue);
+			itemCheck(self, target, this.type, this.skill, outputVal, this.DefValue, deck);
 			this.fleeting = true;
 		}
 		self.mana -= this.cost;
 		this.hasPlayed = true;
 		console.log(player.vals);
-		console.log(enem.vals);
 	}
 }
 
 export class Relic {
-	constructor(type, value, name, cost) {
+	constructor(type, value, name, price) {
 		this.name = type == "gold" ? "Money" : name
 		this.type = type
-		this.cost = cost
+		this.price = price
 		this.value = value
 	}
 
@@ -480,22 +531,7 @@ export class Relic {
 
 export class Deck {
 	constructor(cards) {
-		this.cards = [
-			new Card("", "strike", 200, 1),
-			new Card("", "strike", 200, 1),
-			new Card("", "potion", 20, 2, "item"),
-			new Card("", "shield", 20, 3),
-			new Card("", "shield", 20, 4),
-			new Card("", "potion", 20, 2, "item"),
-			new Card("", "potion", 20, 2, "item"),
-			new Card("", "potion", 20, 2, "item"),
-			new Card("flying", "flash", 20, 3),
-			new Card("fighting", "fighting", 20, 5),
-			new Card("bug", "flash", 20, 4),
-			new Card("water", "water", 20, 2),
-			new Card("water", "flash", 20, 2),
-			new Card("dark", "dark", 20, 3),
-		];
+		this.cards = cards;
 		this.hand = [];
 		this.discardPile = [];
 		this.shuffledCards = [];
@@ -517,9 +553,11 @@ export class Deck {
 	}
 
 	removeCard(card) {
+		console.log(card, "removed yippeee???");
 		this.cards.splice(this.cards.indexOf(card), 1);
 		this.hand.splice(this.hand.indexOf(card), 1);
-		console.log(card, "removed yippeee???");
+		this.cards.splice(this.cards.indexOf(card), 1);
+		this.shuffledCards.splice(this.shuffledCards.indexOf(card), 1);
 		this.maxCardLimit--;
 	}
 
@@ -594,6 +632,7 @@ export class Unit {
 		}
 		console.log(this.name + " healed for " + value);
 		output.innerHTML += this.name + " healed for " + value + "<br/>";
+		console.scrollTop = console.scrollHeight;
 	}
 	OSheal(value, type) {
 		if (type) {
@@ -603,12 +642,13 @@ export class Unit {
 			output.innerHTML += typeEffectLine(ret);
 		}
 		if (this.boosts.find((arr) => arr.includes("exalt"))) {
-			say(this.name, "is exalt! ");
+			say(this.name, "is fortified! ");
 			value *= 1.25;
 		}
 		this.OHP += Math.round(value);
 		console.log(this.name + " gained " + value + " shield");
 		output.innerHTML += this.name + " gained " + value + " shield" + "<br/>";
+		console.scrollTop = console.scrollHeight;
 	}
 	take(value, type) {
 		if (type) {
@@ -630,6 +670,7 @@ export class Unit {
 		}
 		console.log(this.name + " took " + Math.round(value) + " damage");
 		output.innerHTML += this.name + " took " + Math.round(value) + " damage" + "<br/>";
+		console.scrollTop = console.scrollHeight;
 	}
 }
 
@@ -640,7 +681,7 @@ export class Player extends Unit {
 		this.maxevo = maxevo;
 		this.mana = 6;
 		this.maxmana = 6;
-		this.gold = 0;
+		this.gold = 300;
 		this.relicList = [];
 		this.strikeScaling = strikeScaling;
 		this.flashScaling = flashScaling;
@@ -651,6 +692,17 @@ export class Player extends Unit {
 		this.evo += XP;
 		if (this.evo >= this.maxevo) this.evo -= this.maxevo;
 		console.log("evolve");
+	}
+
+	relicCheck() {
+		if (this.relicList.includes("Leftovers")) {
+			say(this.name, "ate Leftovers!")
+			this.heal(this.MaxHP / 10)
+		}
+	}
+
+	eventBoost(stat, value) {
+		this.stat += value;
 	}
 
 	reset() {
@@ -672,12 +724,13 @@ export class Player extends Unit {
 }
 
 export class Enem extends Unit {
-	constructor(name, type, HP, OHP, MaxHP, movelist) {
+	constructor(name, type, HP, OHP, MaxHP, movelist, captureCard = (new Card("", "potion", 20, 2, "item"))) {
 		super(name, type, HP, OHP, MaxHP);
 		this.movelist = movelist;
 		this.startingMove = (this.movelist && this.movelist.length > 0)
 			? this.formulateRetaliate()
 			: null;
+		this.captureCard = captureCard
 	}
 
 	formulateRetaliate() {
@@ -739,10 +792,15 @@ function statusEffectsPush(statusArr, newEffect) {
 	}
 }
 
-function itemCheck(self, target, type, skill, value, defvalue) {
+function itemCheck(self, target, type, skill, value, defvalue, deck) {
 	switch (skill) {
 		case "potion":
 			self.heal(value, type);
+			break;
+		case "pokeball":
+			if (capture(deck, target)) {
+				target.HP = 0;
+			};
 			break;
 	}
 }
@@ -797,10 +855,6 @@ export let player = new Player(
 	6,
 	6,
 );
-
-export let deck = new Deck();
-let enem = new Enem();
-export let game = new GameController(player, enem, deck);
 
 
 export function GameStart(player, enem, deck) {

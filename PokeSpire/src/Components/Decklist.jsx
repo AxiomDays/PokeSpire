@@ -4,13 +4,13 @@ import "bootstrap/dist/js/bootstrap.js";
 import "./Decklist.css";
 import CadeuxReward from "./CadeuxReward";
 
-function Decklist({ isModifying, deck, player }) {
+function Decklist({ isDeleting = false, deck, player }) {
     const [count, setCount] = useState(0);
 
     function deckList() {
         let list = []
         deck.cards.forEach((card) => {
-            list.push(<CadeuxReward card={card} player={player} />)
+            list.push(<CadeuxReward key={card.id} card={card} player={player} deck={deck} isDel={isDeleting} />)
         })
         return list;
     }

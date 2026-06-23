@@ -41,7 +41,7 @@ export async function constructPlayer(pokeName) {
 export async function constructDeck(pokeName) {
     const data = await getPokeData(`https://pokeapi.co/api/v2/pokemon/${pokeName}`);
     const typeList = data["types"];
-    let cards = []
+    let cards = [];
     if (typeList.length == 1) {
         for (let i = 0; i < 4; i++) {
             cards.push(new Card("", "strike", 20, 1),)
@@ -75,9 +75,11 @@ export async function constructDeck(pokeName) {
         };
     }
 
-    for (let i = 0; i < 4; i++) {
-        cards.push(new Card("normal", "potion", 20, 2, "item"),)
+    for (let i = 0; i < 2; i++) {
+        cards.push(new Card("", "potion", 20, 2, "item"),)
+        cards.push(new Card("", "pokeball", 20, 5, "item"))
     }
+    console.log(cards)
     let deck = new Deck(cards)
     return deck
 }

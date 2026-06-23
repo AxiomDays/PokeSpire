@@ -5,7 +5,7 @@ import "./Hand.css";
 import Cadeux from "./Cadeux";
 import { Card } from "/Users/tobirama/Documents/GitHub/PokeSpire/PokeSpire/models.js";
 
-function Hand({ update, changeStateFunc, deck, game, pokemon }) {
+function Hand({ update, changeStateFunc, deck, game, pokemon, map }) {
 	const [count, setCount] = useState(0);
 
 	let hand = [];
@@ -33,6 +33,7 @@ function Hand({ update, changeStateFunc, deck, game, pokemon }) {
 									changeStateFunc(1);
 								} else if (game.gameState == "LOSS") {
 									changeStateFunc(2)
+									map.currentStage = 0
 								}
 							}, 2000);
 						}}
@@ -41,7 +42,7 @@ function Hand({ update, changeStateFunc, deck, game, pokemon }) {
 					</button>
 				</div>
 				<div className="console-box row">
-					<div className="console">
+					<div className="console" id="console">
 						<span id="output"></span>
 					</div>
 				</div>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { game, getRandomNumber, Player, Deck } from "../../models";
+import { getRandomNumber, Player, Deck } from "../../models";
 import { constructPlayer, constructDeck } from "../../api"
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
