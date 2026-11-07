@@ -83,7 +83,6 @@ function GameEvent({ changeStateFunc, player, deck, game, event, isPokeCenter, i
                     break
                 case "reward":
                     rewardGet(option[1])
-
                     break
                 case "buff":
                     player.eventBoost(option[1][1], option[1][0])

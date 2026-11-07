@@ -225,7 +225,7 @@ export const fixedEventList = {
 
 export function mapGenerator(length, line = "standard") {
     let map = []
-    map.push([new Scenario("event", fixedEventList["beginning"])])
+    map.push([new Scenario("event", eventList["teamRocketAmbush"])])
     for (let i = 0; i <= length; i++) {
         if (i % 3 == 0 && i != 0) {
             map.push(segmentGenerator(getRandomNumber(2, 4), 0, line, i, length))
