@@ -3,3 +3,55 @@
     justify-content: center;
     align-items: center;
 }
+
+.store-bg-div {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    margin: 4rem;
+    border: black solid 2px;
+    background-size: cover;
+    background-image: url("../src/assets/symbol-scatter-haikei.png");
+}
+
+.store-div {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 1rem 0;
+    border: 4px black solid;
+    border-radius: 12px 12px 12px 15px;
+    background-color: aliceblue;
+    background-color: rgb(41, 40, 48);
+    box-shadow: 0 0 6px 3px rgba(0, 0, 0, 0.3);
+    margin: 5rem 0;
+}
+
+.row-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.exit {
+    position: absolute;
+    left: 75%;
+}
+
+.store-title {
+    margin: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 2rem;
+    color: black;
+    font-family: 'Tenor Sans';
+}
+
+.store-title img {
+    width: auto;
+    height: auto;
+}

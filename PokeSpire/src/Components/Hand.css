@@ -1,31 +1,53 @@
 .deck {
     width: 100%;
     display: flex;
+    height: max-content;
+    margin-bottom: 5dvh;
     justify-content: center;
-    align-items: center;
+    align-items: start
+}
+
+.hand {
+    height: auto;
 }
 
 .console {
     width: 40%;
-    max-height: 20dvh;
-    min-height: 5dvh;
+    height: 15dvh;
     border: solid 1mm black;
-    margin-top: 4dvh;
-    padding: 0;
+    margin: 2dvh;
+    padding: auto;
     overflow-x: none;
     overflow-y: scroll;
+    scrollbar-width: none;
+    /* Firefox, Safari 18.2+, modern Chromium */
+    -ms-overflow-style: none;
+    background-color: rgb(23, 54, 121);
+
 }
 
-.end-turn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.endturn {
+    width: 1rem;
+}
+
+.endturn img {
+    width: 3rem;
+    background-color: rgb(4, 188, 212);
+    clip-path: circle(50%);
+}
+
+.endturn img:hover {
+    width: 4rem;
+    background-color: rgb(93, 229, 247);
+    transition-duration: 0.3s;
+
 }
 
 .console-box {
     display: flex;
     justify-content: center;
     align-items: center;
+    color: antiquewhite;
 }
 
 #output {
@@ -35,4 +57,13 @@
     font-size: 5mm;
     margin: 0;
     padding: 0;
+    max-height: 15dvh;
+    height: 15dvh;
+    overflow-y: auto;
+    scrollbar-width: none;
+
+    /* Hide scrollbar for older WebKit browsers (Safari, older Chrome) */
+    &::-webkit-scrollbar {
+        display: none;
+    }
 }

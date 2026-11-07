@@ -12,6 +12,11 @@ export class Map_Class {
         this.currentStage = 0
     }
 
+    reset() {
+        this.currentStage = 0
+        this.segments = []
+    }
+
     advance() {
         if (this.currentStage < this.len) {
             this.currentStage += 1;
@@ -23,7 +28,7 @@ export class Map_Class {
 }
 
 export class Scenario {
-    constructor(type, content, weather) {
+    constructor(type, content, weather = "clear") {
         this.type = type
         this.content = content
         this.weather = weather

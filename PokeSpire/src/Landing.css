@@ -1,0 +1,21 @@
+.overall-body {
+    border: solid black 1.2rem;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), url(../src/assets/stacked-peaks-haikei.svg), url(../src/assets/chris-lawton-3Ik7xWYJv3U-unsplash.jpg);
+    background-position: center;
+    background-size: 100%;
+    background-repeat: repeat;
+    min-height: 100dvh
+}
+
+.warning-title {
+    text-align: center;
+    text-decoration: underline;
+}
+
+.mobile-alert {
+    padding: 1rem;
+    margin: 5%;
+    border: solid 2px rgb(31, 15, 15);
+    border-radius: 10px;
+    height: 100%;
+}

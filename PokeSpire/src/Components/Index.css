@@ -1,0 +1,452 @@
+.index-body {
+    display: flex;
+    justify-content: space-around;
+}
+
+.btn-row-index {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+    padding: auto;
+    margin: auto;
+}
+
+.start-button-index {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: skewX(-20deg);
+    padding: 0.5em 0em;
+    background-color: whitesmoke;
+    border: 14px solid black;
+    border-radius: 24px;
+    margin: 1em;
+
+}
+
+.start-button-index span {
+    transform: skewX(20deg);
+    margin: 0;
+    padding: 0;
+    line-height: 100%;
+    font-weight: 800;
+    font-style: oblique;
+    font-size: 3.3em;
+    font-family: 'Koiga'
+}
+
+#katakana {
+    transform: skewX(20deg);
+    padding: 0;
+    font-weight: bold;
+    line-height: 100%;
+    font-style: oblique;
+    font-size: 0.4em;
+    width: 100% !important;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.start-button-index:hover {
+    transform: translateX(2.5em) skewX(-20deg);
+    background-color: rgb(142, 191, 255);
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+}
+
+.main-index-btns:hover {
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.3s;
+    background-position: 40%;
+    background-size: cover;
+    background-image: url("../src/assets/hover-bg-for-index.svg");
+}
+
+#middle-element {
+    margin-left: 6rem;
+}
+
+.poke-display-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0;
+    height: 20rem;
+    width: 80%;
+    border: 4px black solid;
+    border-radius: 12px 12px 12px 15px;
+    background-color: aliceblue;
+    background-color: rgb(41, 40, 48);
+    box-shadow: 0 0 6px 3px rgba(0, 0, 0, 0.3);
+
+
+    background-image: url(../assets/pokeball-icon.png),
+        repeating-linear-gradient(45deg,
+            rgba(255, 255, 255, 0.3),
+            rgba(255, 255, 255, 0.3) 1px,
+            transparent 1px,
+            transparent 6px);
+    background-repeat: repeat;
+    background-position: 2px 2px;
+    background-size: 60px 60px;
+}
+
+.index-generated-image {
+    width: auto;
+    height: 100%;
+
+}
+
+.data-row-index {
+    height: 90dvh;
+    display: block;
+    justify-items: center;
+    border: solid black;
+    border-width: 0px 0px 0 8px;
+}
+
+.data-buttons-row {
+    padding-top: 2rem;
+    margin: 0.5rem 0;
+}
+
+.data-button {
+    background-color: grey;
+    width: fit-content;
+    height: fit-content;
+    /* border: solid 8px gray;
+    outline: solid 4px gray; */
+    border-radius: 80px;
+    font-size: 2rem;
+    font-family: 'Square Sans';
+    font-weight: 500;
+    color: black;
+    margin: auto;
+    padding: 0rem 0.8rem;
+    box-shadow:
+        0 0 0 8px black,
+        /* Inner Border color & thickness */
+        0 0 0 10px grey,
+        /* Middle Gap color & thickness */
+        0 0 0 14px black;
+    /* Outer Border color & thickness */
+
+}
+
+.data-button:hover {
+    color: rgb(254, 252, 252);
+    background-color: #26306D;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-out;
+}
+
+/* .data-button span {
+    border: solid 4px gray;
+    border-radius: 80px;
+    padding: 0.1rem 1rem;
+    margin: 0;
+} */
+
+.data-button img {
+    padding: auto;
+    width: max-content;
+}
+
+.poke-display-svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    background-image: url(../assets/pokeball-icon.png),
+        repeating-linear-gradient(45deg,
+            rgba(255, 255, 255, 0.3),
+            rgba(255, 255, 255, 0.3) 1px,
+            transparent 1px,
+            transparent 6px);
+    background-repeat: repeat;
+    background-position: 2px 2px;
+    background-size: 60px 60px;
+}
+
+.poke-ticket-display {
+
+    display: block;
+    justify-items: center;
+    align-items: center;
+    width: 50dvh;
+    height: 20rem;
+    margin: 1rem 0;
+    background-color: orange;
+    border-radius: 20px;
+    border-style: groove;
+    background-size: cover;
+    background-image: url("data:image/svg+xml,<svg id='patternId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs><pattern id='a' patternUnits='userSpaceOnUse' width='40' height='40' patternTransform='scale(2) rotate(0)'><rect x='0' y='0' width='100%' height='100%' fill='hsla(240,6.7%,17.6%,1)'/><path d='M18.308 0C18.121 10.035 10.028 18.14 0 18.355v2.596c10.147.218 18.343 8.504 18.343 18.702 0 .119-.033.229-.035.347h2.586c-.002-.118-.035-.228-.035-.347 0-10.334 8.408-18.742 18.743-18.742.136 0 .262.037.398.04v-2.596c-.136.003-.262.04-.398.04-10.216 0-18.518-8.224-18.708-18.395Zm1.293 6.854a21.363 21.363 0 0 0 12.8 12.799 21.364 21.364 0 0 0-12.8 12.8 21.363 21.363 0 0 0-12.799-12.8 21.362 21.362 0 0 0 12.8-12.8Z'  stroke-width='1' stroke='none' fill='%233f51b5ff'/><path d='M0 0v8.73c.008.13.024.342.024.342S.02 5.459 2.746 2.734C5.47.01 9.083.012 9.083.012S8.943.001 8.907 0zm31.14 0a6.733 6.733 0 0 0-.176.012s3.613-.002 6.338 2.722c2.34 2.34 2.652 5.197 2.698 5.995V0ZM.025 30.953s-.016.211-.024.342V40h8.903c-.473-.014-3.635-.187-6.157-2.71C.02 34.566.024 30.953.024 30.953ZM40 31.295c-.046.799-.358 3.655-2.698 5.995-2.523 2.523-5.684 2.696-6.158 2.71H40Zm-19.976-6.638s-.001-1.852 1.395-3.25c1.397-1.396 3.25-1.395 3.25-1.395s-1.853.002-3.25-1.395c-1.396-1.397-1.395-3.249-1.395-3.249s.001 1.852-1.396 3.25c-1.396 1.396-3.248 1.394-3.248 1.394s1.852 0 3.248 1.396c1.397 1.397 1.396 3.249 1.396 3.249z'  stroke-width='1' stroke='none' fill='%2300bcd4ff'/></pattern></defs><rect width='800%' height='800%' transform='translate(0,0)' fill='url(%23a)'/></svg>")
+}
+
+.poke-ticket-display:hover {
+    transform: translateY(-1.5rem);
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in;
+}
+
+
+.poke-ticket-inner-box {
+    border: solid black 3px;
+    border-radius: 15px;
+    background-image: url("../src/assets/nordwood-themes-R53t-Tg6J4c-unsplash.jpg");
+    background-position: center;
+    background-size: 120%;
+    margin-top: 1rem;
+    width: 100%;
+    height: 90%;
+}
+
+.poke-ticket-title {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 30px;
+    font-weight: 500;
+    background-color: #6d2626;
+    border-radius: 10px 10px 0 0;
+    color: aliceblue;
+    font-family: 'Tenor Sans';
+}
+
+.poke-ticket-icon {
+    margin-left: 2rem;
+    width: 5rem;
+
+}
+
+.poke-ticket-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+.poke-ticket-passport {
+    border: solid 1px black;
+    border-radius: 8px;
+    background-color: gainsboro;
+    height: 100%;
+
+}
+
+.poke-ticket-passport img {
+    width: 100%;
+}
+
+.poke-type-div {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.poke-type-div img {
+    height: fit-content;
+    width: auto;
+    margin: 1rem;
+}
+
+.poke-ticket-table {
+    line-height: 100%;
+    font-family: 'Tenor Sans';
+    font-size: 11px !important;
+    font-weight: 600;
+}
+
+.poke-ticket-table table tbody tr td {
+    padding: 0.2rem;
+    padding-right: 2.5rem;
+}
+
+.poke-ticket-table table tbody tr {
+    border-bottom: solid black 2px;
+}
+
+.left-row img {
+    width: 80%;
+    border: solid 2px black;
+    border-radius: 10px;
+}
+
+.desc-box {
+    font-size: 0.85rem;
+    text-align: center;
+    border-image: url('../src/assets/borderimage-cardtitle2.png') 40% fill;
+    border-style: solid;
+    border-width: 8px;
+    padding: 0;
+    min-height: 40%;
+    overflow: hidden;
+}
+
+.shadow-text {
+    font-size: 70px;
+    position: absolute;
+    text-transform: uppercase;
+    color: rgb(6, 5, 5);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    border: solid 8px rgb(55, 22, 55);
+    background-color: rgba(57, 27, 27, 0.4);
+    border-radius: 15%;
+    transform: rotate(-10deg);
+    padding: 2rem, 8rem;
+    border-radius: 15px;
+    overflow: hidden;
+    opacity: 0;
+    font-family: "Koiga";
+}
+
+.over-poke-ticket:hover .shadow-text {
+    opacity: 1;
+    transition-duration: 3s;
+}
+
+.line-over-div {
+    position: relative;
+    margin: 0;
+}
+
+.line-over-div:hover {
+    transform: translateY(-2rem);
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
+}
+
+.line-buttons {
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1.5rem 2rem;
+    height: 8rem;
+    width: 8rem;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    background-color: grey;
+}
+
+.line-buttons img {
+    width: 10rem;
+}
+
+.line-bg {
+    background-image: url("../src/assets/nordwood-themes-R53t-Tg6J4c-unsplash.jpg");
+    background-position: center;
+    background-repeat: repeat;
+    background-size: cover;
+
+}
+
+.line-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 0rem;
+    padding: 5rem 0;
+
+
+}
+
+.mtitle {
+    background-color: #6D2725;
+    font-family: 'Tenor Sans';
+}
+
+.msubtitle {
+    padding: 0.5rem;
+    font-style: italic;
+    font-size: 0.7rem;
+    font-family: 'Tenor Sans';
+}
+
+.line-buttons-text {
+    position: absolute;
+    bottom: 0;
+    left: 25%;
+    text-transform: uppercase;
+    font-size: 1.8rem;
+    font-weight: 800;
+    transform: rotate(-15deg);
+    background-color: whitesmoke;
+    color: darkslategrey;
+    font-family: 'Tenor Sans';
+    border: solid 2px grey;
+    border-radius: 5px;
+}
+
+
+
+.over-poke-ticket {
+    position: relative;
+    z-index: 5;
+
+}
+
+.over-poke-ticket:hover .shadow-card::before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    background-position: 50%;
+    background-size: contain;
+    background-image: url("data:image/svg+xml,<svg id='patternId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs><pattern id='a' patternUnits='userSpaceOnUse' width='20' height='40' patternTransform='scale(2) rotate(0)'><rect x='0' y='0' width='100%' height='100%' fill='hsla(240,6.7%,17.6%,1)'/><path d='M10-10V0l10 10V0L10-10zm0 10L0 10v10l10-10V0zm0 30v10l10 10V40L10 30z'  stroke-width='1' stroke='none' fill='%23384758ff'/><path d='M10 10l10 10v10L10 20zm0 10L0 30v10l10-10z'  stroke-width='1' stroke='none' fill='%236d4377ff'/></pattern></defs><rect width='800%' height='800%' transform='translate(0,0)' fill='url(%23a)'/></svg>");
+    transform: rotate(2deg);
+    z-index: -1;
+    border-radius: 12px 12px 12px 15px;
+    animation: shake 1.5s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+    0% {
+        transform: translate(1px, 1px) rotate(0deg);
+    }
+
+    10% {
+        transform: translate(-1px, -2px) rotate(-2deg);
+    }
+
+    20% {
+        transform: translate(-3px, 0px) rotate(2deg);
+    }
+
+    30% {
+        transform: translate(3px, 2px) rotate(0deg);
+    }
+
+    40% {
+        transform: translate(2px, -2px) rotate(2deg);
+    }
+
+    50% {
+        transform: translate(-2px, 2px) rotate(-2deg);
+    }
+
+    60% {
+        transform: translate(-3px, 2px) rotate(0deg);
+    }
+
+    70% {
+        transform: translate(3px, 2px) rotate(-2deg);
+    }
+
+    80% {
+        transform: translate(-2px, -2px) rotate(2deg);
+    }
+
+    90% {
+        transform: translate(2px, 2px) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(2px, -2px) rotate(-2deg);
+    }
+}

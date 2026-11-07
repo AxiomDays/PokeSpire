@@ -1,0 +1,23 @@
+.drop-deck {
+    border: 4px black solid;
+    border-radius: 12px 12px 12px 15px;
+    background-color: aliceblue;
+    background-color: rgb(41, 40, 48);
+    box-shadow: 0 0 6px 3px rgba(0, 0, 0, 0.3);
+
+
+    background-image:
+        repeating-linear-gradient(45deg,
+            rgba(255, 255, 255, 0.3),
+            rgba(255, 255, 255, 0.3) 1px,
+            transparent 1px,
+            transparent 6px);
+    background-repeat: repeat;
+    background-position: 2px 2px;
+    background-size: 60px 60px;
+}
+
+.card-div {
+    display: grid;
+    place-items: center;
+}

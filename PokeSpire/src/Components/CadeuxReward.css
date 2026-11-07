@@ -1,16 +1,43 @@
 .card-box-reward {
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1mm solid black;
-    border-radius: 3mm;
-    padding: 1dvw;
-    background-color: gainsboro;
+    position: relative;
     margin: 1em;
+
 }
 
-.card-details-reward {
-    font-size: 20px;
+/* .card-box-reward:hover {
+    transform: translateY(-1rem);
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
+} */
+
+.card-details-reward {}
+
+
+.tooltiptest {}
+
+.tooltiptext {
+    visibility: hidden;
+    width: auto;
+    min-width: 130px;
+    background-color: black;
+    color: #ffffff;
+    font-size: 0.9rem;
+    text-align: center;
+    border-radius: 6px;
+    padding: 10px 10px;
+    position: absolute;
+    overflow: visible;
+    z-index: 10;
+    top: -5px;
+    left: 105%;
+}
+
+.tooltiptest:hover .tooltiptext {
+    visibility: visible;
 }
 
 .hide {

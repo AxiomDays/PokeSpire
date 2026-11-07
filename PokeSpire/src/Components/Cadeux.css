@@ -1,21 +1,165 @@
 .card-box {
+    color: black;
     display: flex;
     justify-content: center;
     align-items: center;
     border: 1mm solid black;
     border-radius: 3mm;
     padding: 1dvw;
+    background-image: url("data:image/svg+xml,<svg id='patternId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs><pattern id='a' patternUnits='userSpaceOnUse' width='40' height='40' patternTransform='scale(2) rotate(0)'><rect x='0' y='0' width='100%' height='100%' fill='hsla(240,6.7%,17.6%,1)'/><path d='M18.308 0C18.121 10.035 10.028 18.14 0 18.355v2.596c10.147.218 18.343 8.504 18.343 18.702 0 .119-.033.229-.035.347h2.586c-.002-.118-.035-.228-.035-.347 0-10.334 8.408-18.742 18.743-18.742.136 0 .262.037.398.04v-2.596c-.136.003-.262.04-.398.04-10.216 0-18.518-8.224-18.708-18.395Zm1.293 6.854a21.363 21.363 0 0 0 12.8 12.799 21.364 21.364 0 0 0-12.8 12.8 21.363 21.363 0 0 0-12.799-12.8 21.362 21.362 0 0 0 12.8-12.8Z'  stroke-width='1' stroke='none' fill='%233f51b5ff'/><path d='M0 0v8.73c.008.13.024.342.024.342S.02 5.459 2.746 2.734C5.47.01 9.083.012 9.083.012S8.943.001 8.907 0zm31.14 0a6.733 6.733 0 0 0-.176.012s3.613-.002 6.338 2.722c2.34 2.34 2.652 5.197 2.698 5.995V0ZM.025 30.953s-.016.211-.024.342V40h8.903c-.473-.014-3.635-.187-6.157-2.71C.02 34.566.024 30.953.024 30.953ZM40 31.295c-.046.799-.358 3.655-2.698 5.995-2.523 2.523-5.684 2.696-6.158 2.71H40Zm-19.976-6.638s-.001-1.852 1.395-3.25c1.397-1.396 3.25-1.395 3.25-1.395s-1.853.002-3.25-1.395c-1.396-1.397-1.395-3.249-1.395-3.249s.001 1.852-1.396 3.25c-1.396 1.396-3.248 1.394-3.248 1.394s1.852 0 3.248 1.396c1.397 1.397 1.396 3.249 1.396 3.249z'  stroke-width='1' stroke='none' fill='%2300bcd4ff'/></pattern></defs><rect width='800%' height='800%' transform='translate(0,0)' fill='url(%23a)'/></svg>");
     background-color: gainsboro;
     height: 30dvh;
+    width: 15rem;
+    font-family: 'Tenor Sans';
+}
+
+.card-box-box:hover {
+    transform: translateY(-2rem);
+    transition-duration: 0.4s;
+    transition-timing-function: ease-out;
 }
 
 .card-details {
     font-size: 20px;
     text-align: center;
-    height: 20dvh;
+    height: 25dvh;
+    border-radius: 10px;
+    background-image: url(../src/assets/pokeball-icon.png), url(../src/assets/low-poly-grid-haikei.png);
+    background-position: center;
+    background-size: 100%;
+
 }
 
 .desc-cadeaux {
     font-size: 0.85rem;
     text-align: center;
+    border-image: url('../src/assets/borderimage-cardtitle2.png') 40% fill;
+    border-style: solid;
+    border-width: 8px;
+    padding: 0;
+    min-height: 40%;
+    max-height: 40%;
+    overflow: hidden;
+}
+
+.card-cost {
+    border: solid black 2px;
+    width: auto;
+    height: auto;
+    background-color: antiquewhite;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    margin: 0;
+    font-family: 'Liberation Serif';
+}
+
+.card-title {
+    margin: 0;
+    padding: 0;
+}
+
+.top-row {
+    border-image: url('../src/assets/borderimage-cardtitle2.png') 40% fill;
+    border-style: solid;
+    border-width: 8px;
+    padding: 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.type-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.type-row span {
+    font-size: 0.8rem;
+    width: min-content;
+    margin: 0;
+    color: whitesmoke;
+    padding: 0 0.2rem;
+    background-color: black;
+    border-radius: 100px;
+    margin-top: -0.5rem;
+    border: solid 2px grey;
+}
+
+.card-img {
+    width: auto;
+    height: 40%;
+
+    overflow: hidden;
+}
+
+.card-img img {
+    clip-path: circle(30% at center);
+}
+
+.tooltiptest {}
+
+.tooltiptext {
+    visibility: hidden;
+    width: auto;
+    min-width: 130px;
+    background-color: black;
+    color: #ffffff;
+    font-size: 0.9rem;
+    text-align: center;
+    border-radius: 6px;
+    padding: 10px 10px;
+    position: absolute;
+    overflow: visible;
+    z-index: 10;
+    top: -5px;
+    left: 105%;
+    font-family: 'Tenor Sans';
+}
+
+.tooltiptest:hover .tooltiptext {
+    visibility: visible;
+}
+
+.addendum {
+    padding-top: 0.4rem;
+}
+
+.faded-hide {
+    animation-name: cardFadeOut;
+    animation-duration: 0.8s;
+    animation-fill-mode: initial;
+}
+
+.fade-in {
+    animation-name: cardFadeIn;
+    animation-duration: 0.8s;
+    animation-fill-mode: initial;
+}
+
+@keyframes cardFadeIn {
+    0% {
+        opacity: 0%;
+        transform: translateY(1dvh);
+    }
+
+    100% {
+
+        opacity: 100%;
+        transform: translateY(0);
+    }
+}
+
+@keyframes cardFadeOut {
+    0% {
+        transform: translateY(0rem);
+        opacity: 100%;
+
+    }
+
+    100% {
+        transform: translateY(-6rem);
+        opacity: 0%;
+        visibility: hidden;
+    }
 }

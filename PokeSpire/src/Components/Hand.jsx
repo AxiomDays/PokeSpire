@@ -1,51 +1,58 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
 import "./Hand.css";
 import Cadeux from "./Cadeux";
 import { Card } from "/Users/tobirama/Documents/GitHub/PokeSpire/PokeSpire/models.js";
 
-function Hand({ update, changeStateFunc, deck, game, pokemon, map }) {
-	const [count, setCount] = useState(0);
+function Hand({ update, changeStateFunc, deck, game, pokemon, map, openVictoryModal, setTurnCounter }) {
+	const [drawCount, setDrawCount] = useState(0);
 
-	let hand = [];
 	let counter = 0;
+	let hand = []
+
+
 	deck.hand.forEach((card) => {
 		counter++;
 		hand.push(
-			<div key={counter} className="col-2">
+			<div key={counter} id="card-battle-div" className="col-2">
 				<Cadeux card={card} update={update} game={game} player={pokemon} />
 			</div>,
 		);
 	});
 
+	useEffect(() => { }, [drawCount, hand])
+
 	return (
 		<>
-			<div className="container-fluid p-0">
-				<div className="deck row">{hand}</div>
-				<div className="end-turn">
-					<button
+			<div className="container-fluid p-0 hand">
+				<div className="console-box row p-0">
+					<div className="console col-10" id="console">
+						<span id="output"></span>
+					</div>
+					<div className="endturn col-2"
 						onClick={() => {
 							game.endTurn(pokemon);
+							setTurnCounter()
 							setTimeout(() => {
 								update();
-								if (game.gameState == "WIN") {
-									changeStateFunc(1);
+								if (game.gameState == "WIN" && game.overKill == true) {
+									openVictoryModal(true)
+								} else if (game.gameState == "WIN") {
+									openVictoryModal(false)
 								} else if (game.gameState == "LOSS") {
-									changeStateFunc(2)
+									openVictoryModal(false, true)
 									map.currentStage = 0
 								}
 							}, 2000);
 						}}
 					>
-						end-turn
-					</button>
-				</div>
-				<div className="console-box row">
-					<div className="console" id="console">
-						<span id="output"></span>
+						<img src="../src/assets/keyboard_double_arrow_right_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg" alt="" srcset="" />
 					</div>
 				</div>
+				<div className="deck row">{hand}</div>
+
+
 			</div>
 		</>
 	);

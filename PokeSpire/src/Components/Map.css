@@ -1,10 +1,184 @@
 .choice-group {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     padding-top: 10dvh;
 }
 
 .scene-btn {
-    margin: 3dvh 0dvh;
+    position: relative;
+    padding: 2rem 2rem;
+    margin: 3dvh 3dvh;
+    mask: conic-gradient(from -142.5deg at right, #0000, #000 1deg 104deg, #0000 105deg) 50%/100% 20px;
+    border: black solid 3px;
+    border-radius: 5px;
+    border-right: 0px;
+    background-image: linear-gradient(rgba(195, 139, 65, 0.5)), url("../src/assets/kiwihug-MS9Tnh3if1o-unsplash.jpg");
+    background-position: center;
+    background-size: 250%;
+}
+
+.scene-btn:hover {
+    transform: translateY(1.5rem);
+    transition-duration: 0.3s;
+}
+
+.choice-group-title {
+    display: block;
+    text-decoration: underline;
+    text-transform: capitalize;
+    color: antiquewhite;
+    font-size: 100px;
+    letter-spacing: 0.1em;
+    text-align: center;
+    font-family: 'High Sans Serif';
+}
+
+.event-map {
+    display: flex;
+    justify-content: center;
+}
+
+
+.redbox {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    border: 4px rgb(205, 104, 104) solid;
+    border-radius: 15px;
+    font-family: "Koiga";
+}
+
+#left-redbox {
+    border-right: 4px rgb(205, 104, 104) solid;
+    padding: 0;
+    writing-mode: vertical-lr;
+}
+
+#right-redbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-left: 4px rgb(205, 104, 104) solid;
+    padding: 0;
+    writing-mode: vertical-lr;
+    font-size: 1.5rem;
+}
+
+
+.redbox-middle-top {
+    border-bottom: 4px rgb(205, 104, 104) solid;
+    display: flex;
+    height: 12dvh;
+    justify-content: center;
+    align-items: start;
+
+}
+
+.redbox-middle-top p {
+    font-size: 70px;
+    position: absolute;
+    text-transform: uppercase;
+    color: rgb(113, 107, 107);
+    transform: rotate(-10deg);
+    border: solid 7px rgba(79, 52, 79, 0.6);
+    padding: 2rem 0, 8rem;
+    border-radius: 15px;
+    letter-spacing: -0.08em;
+    opacity: 0.8;
+    font-family: 'Liberation Serif';
+}
+
+.redbox-middle-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 25px;
+    text-transform: capitalize;
+    color: #000;
+}
+
+.weather-icon {
+    position: absolute;
+    top: -0.5rem;
+    left: -0.5rem;
+    pointer-events: none;
+    border-radius: 100%;
+    padding: 0.3rem;
+    margin: 0;
+
+    border: black solid 3px;
+
+}
+
+.victory-div {
+    position: relative;
+    display: flex;
+    justify-content: end;
+    width: 60dvw;
+    height: 60dvh;
+    border: solid 4px white;
+    background-color: burlywood;
+    background-image: url(../src/assets/envelope.jpg);
+    background-position: 70%;
+    background-size: 220%;
+    margin-bottom: 5rem;
+    border-radius: 20px;
+}
+
+.victory-div .metro-stamp {
+    position: absolute;
+    top: 20%;
+    left: -25%;
+    transform: rotate(-10deg);
+}
+
+.lines-completed {
+    border: 2px dotted rgb(219, 214, 214);
+    background-image: url(../src/assets/juliette-jardin-JAkL58H0Xs0-unsplash.jpg);
+    background-position: center;
+    background-size: 150%;
+    font-family: 'Tenor Sans';
+}
+
+.victory-div-header {
+    text-align: center;
+    padding: 2rem;
+    font-family: 'Koiga';
+}
+
+.victory-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    border-bottom: 3px black solid;
+    border-radius: 2px;
+}
+
+.victory-table {
+    width: 100%;
+}
+
+.stars {
+    fill: #000;
+}
+
+#sunny {
+    background-color: orange;
+}
+
+#windy {
+    background-color: rgb(141, 220, 238);
+}
+
+#foggy {
+    background-color: aliceblue;
+}
+
+#rainy {
+    background-color: grey;
+}
+
+#hail {
+    background-color: skyblue;
 }
