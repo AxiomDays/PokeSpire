@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { skillNametoMoveName } from "../../models"
+import { Card, Relic, skillNametoMoveName } from "../../models"
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
 import "./CadeuxReward.css";
@@ -13,7 +13,7 @@ function CadeuxReward({ card, isItem = false, player, deck, isDel = false, isBuy
 	const [typeDisplay, setTypeDisplay] = useState(false)
 	let price = isBuy ? `$${card.price}` : ""
 
-	if (card.constructor.name == "Relic") {
+	if (card instanceof Relic) {
 		isItem = true
 	}
 
@@ -50,12 +50,12 @@ function CadeuxReward({ card, isItem = false, player, deck, isDel = false, isBuy
 	}
 
 	const rewardGet = (reward) => {
-		if (reward.constructor.name == "Card") {
+		if (reward instanceof Card) {
 			console.log(deck.cards)
 			deck.addCard(reward)
 			console.log("reward get obtained")
 			console.log(deck.cards)
-		} else {
+		} else if (reward instanceof Relic) {
 			reward.addRelic(player)
 		}
 	}

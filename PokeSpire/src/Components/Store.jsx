@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { getRandomNumber, Player, Deck, randomProperty, takeRandomFromArray } from "../../models";
+import { Relic, getRandomNumber, Player, Deck, randomProperty, takeRandomFromArray } from "../../models";
 import { rewards, cardRewards } from "../../data"
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
@@ -36,10 +36,10 @@ function Store({ changeStateFunc, player, deck }) {
             let rewardCard = inventory.card[i]
             let rewardRelic = inventory.relics[i]
             cards.push(
-                <CadeuxReward isItem={rewardCard.constructor.name == "Relic"} card={rewardCard} deck={deck} player={player} isBuy={true} />
+                <CadeuxReward isItem={rewardCard instanceof Relic} card={rewardCard} deck={deck} player={player} isBuy={true} />
             )
             relics.push(
-                <CadeuxReward isItem={rewardRelic.constructor.name == "Relic"} card={rewardRelic} deck={deck} player={player} isBuy={true} />
+                <CadeuxReward isItem={rewardRelic instanceof Relic} card={rewardRelic} deck={deck} player={player} isBuy={true} />
             )
         }
 

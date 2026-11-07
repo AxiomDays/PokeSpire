@@ -4,7 +4,7 @@ import "bootstrap/dist/js/bootstrap.js";
 import "./App.css";
 import PlayField from "./PlayField";
 import Hand from "./Hand";
-import { Relic, takeRandomFromArray, getRandomNumber, cardGenerator, statusEffectsPush } from "../../models";
+import { Card, Relic, takeRandomFromArray, getRandomNumber, cardGenerator, statusEffectsPush } from "../../models";
 import { rewards, cardRewards, } from "../../data"
 import CadeuxReward from "./CadeuxReward";
 
@@ -52,7 +52,7 @@ function App({ changeStateFunc, pokemon, deck, weather, game, map, turncounter }
 	}
 
 	const rewardGet = (reward) => {
-		if (reward.constructor.name == "Card") {
+		if (reward instanceof Card) {
 			console.log(deck.cards)
 			deck.addCard(reward)
 			console.log("reward get obtained")
@@ -81,7 +81,7 @@ function App({ changeStateFunc, pokemon, deck, weather, game, map, turncounter }
 		rewardArr.forEach((card) => {
 			returnArr.push(
 				<div className="card-box col-3" onClick={() => { rewardGet(card); victorySelect() }}>
-					<CadeuxReward isItem={card.constructor.name == "Relic"} card={card} deck={deck} player={player} isGet={true} /></div >
+					<CadeuxReward isItem={card instanceof Relic} card={card} deck={deck} player={player} isGet={true} /></div >
 			)
 		})
 		return returnArr
@@ -180,11 +180,11 @@ function App({ changeStateFunc, pokemon, deck, weather, game, map, turncounter }
 
 					{/* {overKill ? <div className="event-option col-10 tooltiptest" onClick={() => { rewardGet(fightReward); victorySelect(); }}>Obtain this card.
 						<div className="tooltiptext">
-							<CadeuxReward isItem={fightReward.constructor.name == "Relic"} card={fightReward} player={pokemon} />
+							<CadeuxReward isItem={fightReward instanceof Relic} card={fightReward} player={pokemon} />
 						</div>
 					</div> : <div className="event-option col-10 tooltiptest" onClick={() => { rewardGet(fightReward); victorySelect(); }}>Obtain this card.
 						<div className="tooltiptext">
-							<CadeuxReward isItem={fightReward.constructor.name == "Relic"} card={fightReward} player={pokemon} />
+							<CadeuxReward isItem={fightReward instanceof Relic} card={fightReward} player={pokemon} />
 						</div>
 					</div>}
 
@@ -192,7 +192,7 @@ function App({ changeStateFunc, pokemon, deck, weather, game, map, turncounter }
 
 					<div className="event-option col-10 tooltiptest" onClick={() => { setFightReward(generateSurprise(pokemon)); setSuprise(true); victorySelect(); }}>Surprise Me.
 						{surpriseCardGenerated && <div className="tooltiptext">
-							<CadeuxReward isItem={fightReward.constructor.name == "Relic"} card={fightReward} player={pokemon} />
+							<CadeuxReward isItem={fightReward instanceof Relic} card={fightReward} player={pokemon} />
 							<div className="rewardGet col-8">GET!</div>
 						</div>}
 					</div> */}

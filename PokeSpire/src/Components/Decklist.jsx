@@ -5,6 +5,7 @@ import "./Decklist.css";
 import CadeuxReward from "./CadeuxReward";
 import MetroCard from "./MetroCard";
 import { relicGenerator } from "../../data.js"
+import { Relic } from "../../models.js";
 
 function Decklist({ isDeleting = false, isChangeType = false, deck, player, png, typePNG, reliclist = false, changeStateFunc, shadowException, ccLimit }) {
     const [count, setCount] = useState(0);
@@ -21,7 +22,8 @@ function Decklist({ isDeleting = false, isChangeType = false, deck, player, png,
     function relicList() {
         let relicList = []
         player.relicList.forEach((card) => {
-            relicList.push(<CadeuxReward isItem={relicGenerator(card).constructor.name == "Relic"} card={relicGenerator(card)} player={player} />)
+            const relic = relicGenerator(card)
+            relicList.push(<CadeuxReward isItem={relic instanceof Relic} card={relic} player={player} />)
         })
         return relicList;
     }

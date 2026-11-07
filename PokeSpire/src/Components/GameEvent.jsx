@@ -6,7 +6,7 @@ import CadeuxReward from "./CadeuxReward";
 import PlayerStatBar from "./PlayerStatBar";
 import Decklist from "./Decklist";
 import { useEffect } from "react";
-import { statusEffectsPush, takeRandomFromArray, skillNametoMoveName } from "../../models";
+import { Card, Enem, Relic, statusEffectsPush, takeRandomFromArray, skillNametoMoveName } from "../../models";
 
 function GameEvent({ changeStateFunc, player, deck, game, event, isPokeCenter, isChest, gamestart, evolve, png, typePNG }) {
     const [count, setCount] = useState(0);
@@ -41,7 +41,7 @@ function GameEvent({ changeStateFunc, player, deck, game, event, isPokeCenter, i
                 console.log("fight in game event hit")
                 break
         }
-        if (content.constructor.name == "Enem") {
+        if (content instanceof Enem) {
             content.reset()
             gamestart(player, content, deck, "clear")
         }
@@ -55,12 +55,12 @@ function GameEvent({ changeStateFunc, player, deck, game, event, isPokeCenter, i
     }
 
     const rewardGet = (reward) => {
-        if (reward.constructor.name == "Card") {
+        if (reward instanceof Card) {
             console.log(deck.cards)
             deck.addCard(reward)
             console.log("reward get obtained")
             console.log(deck.cards)
-        } else {
+        } else if (reward instanceof Relic) {
             reward.addRelic(player)
         }
 

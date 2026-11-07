@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
 import "./Map.css";
 import MetroCard from "./MetroCard.jsx"
-import { skillNametoMoveName } from "../../models.js";
+import { Card, Enem, Relic, skillNametoMoveName } from "../../models.js";
 import CadeuxReward from "./CadeuxReward.jsx";
 import { useEffect } from "react";
 
@@ -57,7 +57,7 @@ function Map({ changeStateFunc, map, player, deck, game, png, typePNG, gamestart
 				changeStateFunc(7)
 				break
 		}
-		if (content.constructor.name == "Enem") {
+		if (content instanceof Enem) {
 			content.reset()
 			console.log("weather is, ", weather)
 			gamestart(player, content, deck, weather)
@@ -69,12 +69,12 @@ function Map({ changeStateFunc, map, player, deck, game, png, typePNG, gamestart
 	}
 
 	const rewardGet = (reward) => {
-		if (reward.constructor.name == "Card") {
+		if (reward instanceof Card) {
 			console.log(deck.cards)
 			deck.addCard(reward)
 			console.log("reward get obtained")
 			console.log(deck.cards)
-		} else {
+		} else if (reward instanceof Relic) {
 			reward.addRelic(player)
 		}
 		changeStateFunc(2);
@@ -146,7 +146,7 @@ function Map({ changeStateFunc, map, player, deck, game, png, typePNG, gamestart
 		// 		reward = new Relic("gold", 200)
 		// 	}
 		// 	seg.push(
-		// 		<div className="scene-btn col-3" onClick={() => rewardGet(reward)}><CadeuxReward isItem={reward.constructor.name == "Relic"} card={reward} player={player} /></div>
+		// 		<div className="scene-btn col-3" onClick={() => rewardGet(reward)}><CadeuxReward isItem={reward instanceof Relic} card={reward} player={player} /></div>
 		// 	)
 		// }
 		//return seg
