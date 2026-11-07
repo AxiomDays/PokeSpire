@@ -1,6 +1,6 @@
 .overall-body {
     border: solid black 1.2rem;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), url(../src/assets/stacked-peaks-haikei.svg), url(../src/assets/chris-lawton-3Ik7xWYJv3U-unsplash.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), url(/stacked-peaks-haikei.svg), url(/chris-lawton-3Ik7xWYJv3U-unsplash.jpg);
     background-position: center;
     background-size: 100%;
     background-repeat: repeat;

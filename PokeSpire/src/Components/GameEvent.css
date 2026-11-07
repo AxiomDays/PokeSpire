@@ -4,7 +4,7 @@
     justify-content: space-evenly;
     padding: 2rem;
     margin-top: 2rem;
-    border-image: url('../src/assets/borderimage-cardtitle2.png') 30% fill;
+    border-image: url('/borderimage-cardtitle2.png') 30% fill;
     border-style: solid;
     border-width: 10px;
     width: 100%;
@@ -22,14 +22,14 @@
     padding: 0.5rem;
     margin: 2em 0;
     border: solid 1px black;
-    border-image: url('../src/assets/borderimage-cardtitle2.png') 30% fill;
+    border-image: url('/borderimage-cardtitle2.png') 30% fill;
     border-style: solid;
     border-width: 10px;
     font-family: 'Tenor Sans';
 }
 
 .event-option:hover {
-    border-image: url('../src/assets/borderimage-cardtitle2.png') 30% fill;
+    border-image: url('/borderimage-cardtitle2.png') 30% fill;
     border-style: solid;
     border-width: 10px;
     transform: translateY(-1rem);
@@ -55,7 +55,7 @@
     padding: 0;
     border-style: solid;
     border-width: 15px;
-    border-image-source: url("../src/assets/Pokmon-Ruby-Sapphire-and-Emerald04262023-011408-30043.jpg");
+    border-image-source: url("/Pokmon-Ruby-Sapphire-and-Emerald04262023-011408-30043.jpg");
     background-color: rgb(241, 213, 175);
     border-image-slice: 5%;
     border-image-repeat: round;
@@ -69,7 +69,7 @@
 .greyBorderImage {
     border-style: solid;
     border-width: 15px;
-    border-image-source: url("../src/assets/Pokmon-Ruby-Sapphire-and-Emerald04262023-011408-30043.jpg");
+    border-image-source: url("/Pokmon-Ruby-Sapphire-and-Emerald04262023-011408-30043.jpg");
     background-color: whitesmoke;
     border-image-slice: 5%;
     border-image-repeat: round;

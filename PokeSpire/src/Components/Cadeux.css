@@ -24,7 +24,7 @@
     text-align: center;
     height: 25dvh;
     border-radius: 10px;
-    background-image: url(../src/assets/pokeball-icon.png), url(../src/assets/low-poly-grid-haikei.png);
+    background-image: url(/pokeball-icon.png), url(/low-poly-grid-haikei.png);
     background-position: center;
     background-size: 100%;
 
@@ -33,7 +33,7 @@
 .desc-cadeaux {
     font-size: 0.85rem;
     text-align: center;
-    border-image: url('../src/assets/borderimage-cardtitle2.png') 40% fill;
+    border-image: url('/borderimage-cardtitle2.png') 40% fill;
     border-style: solid;
     border-width: 8px;
     padding: 0;
@@ -59,7 +59,7 @@
 }
 
 .top-row {
-    border-image: url('../src/assets/borderimage-cardtitle2.png') 40% fill;
+    border-image: url('/borderimage-cardtitle2.png') 40% fill;
     border-style: solid;
     border-width: 8px;
     padding: 0;

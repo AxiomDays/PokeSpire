@@ -3,7 +3,7 @@ import "./Index.css";
 import { useState, useEffect } from "react";
 
 function MetroCard({ player, png, typePNG, phase, noImg = false }) {
-    const [img, setImg] = useState(["../src/assets/pokeball-icon.png", "../src/assets/pokeball-icon.png", "../src/assets/pokeball-icon.png"])
+    const [img, setImg] = useState(["/pokeball-icon.png", "/pokeball-icon.png", "/pokeball-icon.png"])
     const [typeImg, setTypeImg] = useState([""])
     const [playerArr, setPlayerArr] = useState([])
 
@@ -25,7 +25,7 @@ function MetroCard({ player, png, typePNG, phase, noImg = false }) {
             <div className="over-poke-ticket">
                 <div className={player.shadow ? "shadow-card poke-ticket-display" : "poke-ticket-display"} >
                     <div className="poke-ticket-inner-box">
-                        <div className="poke-ticket-title">METRO TICKET<img src="../src/assets/pokeball-icon.png" className="poke-ticket-icon"></img></div>
+                        <div className="poke-ticket-title">METRO TICKET<img src="/pokeball-icon.png" className="poke-ticket-icon"></img></div>
                         <div className="poke-ticket-body row">
                             {!noImg ? <div className="poke-ticket-left-row col-4">
                                 <div className="poke-ticket-passport">

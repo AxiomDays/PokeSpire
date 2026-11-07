@@ -89,7 +89,7 @@ function Map({ changeStateFunc, map, player, deck, game, png, typePNG, gamestart
 		map.segments[stage].forEach((scene) => {
 			seg.push(
 				<div className="scene-btn col-3" onClick={() => swapToScene(scene.type, scene.content, false, scene.weather)}>
-					{scene.weather && scene.weather != "clear" ? <span className="weather-icon" id={scene.weather}> <img src={"../src/assets/icons/weather/" + scene.weather + ".png"} alt="" srcset="" /></span> : <></>}
+					{scene.weather && scene.weather != "clear" ? <span className="weather-icon" id={scene.weather}> <img src={"/icons/weather/" + scene.weather + ".png"} alt="" srcset="" /></span> : <></>}
 					<div className="redbox row">
 						<span className="col-1" id="left-redbox">
 						</span>
@@ -98,9 +98,9 @@ function Map({ changeStateFunc, map, player, deck, game, png, typePNG, gamestart
 								<p>{scene.type}</p>
 							</span>
 							<span className="redbox-middle-bottom col-12">
-								<img src="../src/assets/stars_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="" srcset="" />
+								<img src="/stars_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="" srcset="" />
 								ADMIT ONE
-								<img src="../src/assets/stars_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="" srcset="" /></span>
+								<img src="/stars_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="" srcset="" /></span>
 						</div>
 						<span className="col-1" id="right-redbox">B009987</span>
 					</div></div>

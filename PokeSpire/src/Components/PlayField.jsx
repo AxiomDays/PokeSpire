@@ -155,7 +155,7 @@ function PlayField({
 		for (let status of enemStatus) {
 			console.log(status[0])
 			resultEnem.push(<span className="status-icon tooltipteststatus">
-				<img src={`../src/assets/icons/${status[0]}.png`} alt="" srcset="" onError={(e) => { e.currentTarget.src = '../src/assets/icons/default.png'; }} />
+				<img src={`/icons/${status[0]}.png`} alt="" srcset="" onError={(e) => { e.currentTarget.src = '/icons/default.png'; }} />
 				<span className="number">{status[1]}</span>
 				<span className="tooltipstatus">{statusDescEnemy(status[0])}</span>
 			</span>)
@@ -163,7 +163,7 @@ function PlayField({
 		for (let status of playerStatus) {
 			console.log(status[0])
 			resultPlayer.push(<span className="status-icon tooltipteststatus">
-				<img src={`../src/assets/icons/${status[0]}.png`} alt="" srcset="" onError={(e) => { e.currentTarget.src = '../src/assets/icons/default.png'; }} />
+				<img src={`/icons/${status[0]}.png`} alt="" srcset="" onError={(e) => { e.currentTarget.src = '/icons/default.png'; }} />
 				<span className="number">{status[1]}</span>
 				<span className="tooltipstatus">{statusDescPlayer(status[0])}</span>
 			</span>)
@@ -178,7 +178,7 @@ function PlayField({
 
 		return (<>
 			<div className="row col justify-content-center">
-				<img src={'../src/assets/icons/' + atk + '.png'} alt="" className="enemy-move-icon" /><span className="enem-number">{multiHitPrint}</span>
+				<img src={'/icons/' + atk + '.png'} alt="" className="enemy-move-icon" /><span className="enem-number">{multiHitPrint}</span>
 			</div>
 		</>)
 	}
@@ -198,17 +198,17 @@ function PlayField({
 									<span className="">{HP}/{MaxHP}</span>
 									<span className="hp-bar col-2"> {activeSHD ? <div className="hp-bar-value" style={{ width: `${hpPercentage}%`, 'background-color': 'lightblue' }}></div> : <div className="hp-bar-value" style={{ width: `${hpPercentage}%`, 'background-color': 'greenyellow' }}></div>}</span>
 									<span className="xp-bar col-2"> <div className="xp-bar-value" style={{ width: `${pevoPercentage}%` }}></div></span>
-									<span className="shield"><img src="../src/assets/icons/fortress.png" alt="" srcset="" className="shield-icon" />{SHD}</span>
+									<span className="shield"><img src="/icons/fortress.png" alt="" srcset="" className="shield-icon" />{SHD}</span>
 								</div>
 								<div className="status-row" id="status-row">{str != 0 ?
 									<span className="status-icon tooltipteststatus">
-										<img src={`../src/assets/icons/strength.png`} alt="" srcset="" />
+										<img src={`/icons/strength.png`} alt="" srcset="" />
 										<span className="number">{str}</span>
 										<span className="tooltipstatus">{statusDescPlayer("strength")}</span>
 									</span>
 									: ""}{tstr != 0 ?
 										<span className="status-icon tooltipteststatus">
-											<img src={`../src/assets/icons/strength.png`} alt="" srcset="" />
+											<img src={`/icons/strength.png`} alt="" srcset="" />
 											<span className="number">{tstr}</span>
 											<span className="tooltipstatus">{statusDescPlayer("temp_strength")}</span>
 										</span>
@@ -223,11 +223,11 @@ function PlayField({
 									<span className="player-name col-12">{ename.toUpperCase()}</span>
 									<span className="">{eHP}/{eMaxHP}</span>
 									<span className="hp-bar col-2"> <div className="hp-bar-value" style={{ width: `${ehpPercentage}%`, 'background-color': 'green' }}></div></span>
-									<span className="shield"><img src="../src/assets/icons/fortress.png" alt="" srcset="" className="shield-icon" />{eSHD}</span>
+									<span className="shield"><img src="/icons/fortress.png" alt="" srcset="" className="shield-icon" />{eSHD}</span>
 								</div>
 								<div className="status-row" id="status-row">{estr != 0 ?
 									<span className="status-icon tooltipteststatus">
-										<img src={`../src/assets/icons/strength.png`} alt="" srcset="" />
+										<img src={`/icons/strength.png`} alt="" srcset="" />
 										<span className="number">{estr}</span>
 										<span className="tooltipstatus">{statusDescEnemy("strength")}</span>
 									</span>

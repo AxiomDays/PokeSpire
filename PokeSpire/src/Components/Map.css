@@ -13,7 +13,7 @@
     border: black solid 3px;
     border-radius: 5px;
     border-right: 0px;
-    background-image: linear-gradient(rgba(195, 139, 65, 0.5)), url("../src/assets/kiwihug-MS9Tnh3if1o-unsplash.jpg");
+    background-image: linear-gradient(rgba(195, 139, 65, 0.5)), url("/kiwihug-MS9Tnh3if1o-unsplash.jpg");
     background-position: center;
     background-size: 250%;
 }
@@ -119,7 +119,7 @@
     height: 60dvh;
     border: solid 4px white;
     background-color: burlywood;
-    background-image: url(../src/assets/envelope.jpg);
+    background-image: url(/envelope.jpg);
     background-position: 70%;
     background-size: 220%;
     margin-bottom: 5rem;
@@ -135,7 +135,7 @@
 
 .lines-completed {
     border: 2px dotted rgb(219, 214, 214);
-    background-image: url(../src/assets/juliette-jardin-JAkL58H0Xs0-unsplash.jpg);
+    background-image: url(/juliette-jardin-JAkL58H0Xs0-unsplash.jpg);
     background-position: center;
     background-size: 150%;
     font-family: 'Tenor Sans';

@@ -31,7 +31,7 @@
 }
 
 .header-gold-display {
-    border-image: url('../src/assets/borderimage-cardtitle2.png') 40% fill;
+    border-image: url('/borderimage-cardtitle2.png') 40% fill;
     border-style: solid;
     border-width: 8px;
     padding: 0;

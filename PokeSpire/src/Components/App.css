@@ -54,7 +54,7 @@ body {
 
   border-style: solid;
   border-width: 15px;
-  border-image-source: url("../src/assets/Pokmon-Ruby-Sapphire-and-Emerald04262023-011408-30043.jpg");
+  border-image-source: url("./Pokmon-Ruby-Sapphire-and-Emerald04262023-011408-30043.jpg");
   background-color: whitesmoke;
   border-image-slice: 5%;
   border-image-repeat: round;

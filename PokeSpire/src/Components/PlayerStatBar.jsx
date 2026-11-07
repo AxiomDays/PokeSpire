@@ -42,7 +42,7 @@ function PlayerStatBar({ player, deck, game }) {
                 </div>
             </div>
             <div className="store-title desc-cadeaux row col">
-                {gold} <img src="../src/assets/coins.png" alt="" className="" />
+                {gold} <img src="/coins.png" alt="" className="" />
             </div>
         </>
     );

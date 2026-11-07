@@ -60,7 +60,7 @@
     transition-duration: 0.3s;
     background-position: 40%;
     background-size: cover;
-    background-image: url("../src/assets/hover-bg-for-index.svg");
+    background-image: url("/hover-bg-for-index.svg");
 }
 
 #middle-element {
@@ -194,7 +194,7 @@
 .poke-ticket-inner-box {
     border: solid black 3px;
     border-radius: 15px;
-    background-image: url("../src/assets/nordwood-themes-R53t-Tg6J4c-unsplash.jpg");
+    background-image: url("/nordwood-themes-R53t-Tg6J4c-unsplash.jpg");
     background-position: center;
     background-size: 120%;
     margin-top: 1rem;
@@ -276,7 +276,7 @@
 .desc-box {
     font-size: 0.85rem;
     text-align: center;
-    border-image: url('../src/assets/borderimage-cardtitle2.png') 40% fill;
+    border-image: url('/borderimage-cardtitle2.png') 40% fill;
     border-style: solid;
     border-width: 8px;
     padding: 0;
@@ -335,7 +335,7 @@
 }
 
 .line-bg {
-    background-image: url("../src/assets/nordwood-themes-R53t-Tg6J4c-unsplash.jpg");
+    background-image: url("/nordwood-themes-R53t-Tg6J4c-unsplash.jpg");
     background-position: center;
     background-repeat: repeat;
     background-size: cover;

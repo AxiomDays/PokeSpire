@@ -9,7 +9,7 @@ import { useEffect } from "react";
 
 function Index({ changeStateFunc, generate, png, typePNG, apiLoading, player, currMap, setCurrMap }) {
     const [count, setCount] = useState(0);
-    const [img, setImg] = useState(["../src/assets/pokeball-icon.png", "../src/assets/pokeball-icon.png", "../src/assets/pokeball-icon.png"])
+    const [img, setImg] = useState(["/pokeball-icon.png", "/pokeball-icon.png", "/pokeball-icon.png"])
     const [typeImg, setTypeImg] = useState([""])
     const [playerArr, setPlayerArr] = useState([])
 
@@ -38,7 +38,7 @@ function Index({ changeStateFunc, generate, png, typePNG, apiLoading, player, cu
         let arr = ["standard", "sky", "sea", "ennui", "mountain"]
         let ret = []
         arr.forEach((line) => {
-            ret.push(<div className="col-4 line-over-div" data-bs-toggle="modal" data-bs-target="#lineModal" onClick={() => { setCurrMap(new Map_Class(mapGenerator(6, line))); changeStateFunc(2) }}><div className="line-buttons"><img src={`../src/assets/lineIcons/${line}.svg`} alt="" srcset="" /></div><span className="line-buttons-text">{line}</span></div>)
+            ret.push(<div className="col-4 line-over-div" data-bs-toggle="modal" data-bs-target="#lineModal" onClick={() => { setCurrMap(new Map_Class(mapGenerator(6, line))); changeStateFunc(2) }}><div className="line-buttons"><img src={`/lineIcons/${line}.svg`} alt="" srcset="" /></div><span className="line-buttons-text">{line}</span></div>)
         })
         return ret
     }
@@ -55,16 +55,16 @@ function Index({ changeStateFunc, generate, png, typePNG, apiLoading, player, cu
                 </div>
                 <div className="data-row-index row col-5">
                     <div className="poke-display-box col-10">
-                        <img className="index-generated-image" src={apiLoading ? "../src/assets/pokeball spin (1).gif" : img[2]} alt="" srcset="" />
+                        <img className="index-generated-image" src={apiLoading ? "/pokeball spin (1).gif" : img[2]} alt="" srcset="" />
 
                     </div>
                     <div className="poke-ticket-display">
                         <div className="poke-ticket-inner-box">
-                            <div className="poke-ticket-title">METRO TICKET<img src="../src/assets/pokeball-icon.png" className="poke-ticket-icon"></img></div>
+                            <div className="poke-ticket-title">METRO TICKET<img src="/pokeball-icon.png" className="poke-ticket-icon"></img></div>
                             <div className="poke-ticket-body row">
                                 <div className="poke-ticket-left-row col-4">
                                     <div className="poke-ticket-passport">
-                                        <img src={apiLoading ? "../src/assets/pokeball spin (1).gif" : img[0]} className=""></img>
+                                        <img src={apiLoading ? "/pokeball spin (1).gif" : img[0]} className=""></img>
                                     </div>
                                     <span div="poke-type-div"><img src={typeImg[0]} className=""></img><img src={typeImg[1]} className=""></img></span>
                                 </div>
@@ -116,7 +116,7 @@ function Index({ changeStateFunc, generate, png, typePNG, apiLoading, player, cu
                                 <div className="modal-body ">
                                     <div className="row p-3 m-3">
                                         <div className="left-row col-4 justify-content-center align-content-center">
-                                            <img src="../src/assets/card-example.png" alt="" srcset="" />
+                                            <img src="/card-example.png" alt="" srcset="" />
                                         </div>
                                         <div className="right-row col-8 desc-box">
                                             <h2 className="text-decoration-underline">CARD TUTORIAL</h2>
@@ -149,7 +149,7 @@ function Index({ changeStateFunc, generate, png, typePNG, apiLoading, player, cu
 
                                         </div>
                                         <div className="left-row col justify-content-center align-items-center d-flex">
-                                            <img src="../src/assets/status-bar-example.png" alt="" srcset="" />
+                                            <img src="/status-bar-example.png" alt="" srcset="" />
                                         </div>
                                     </div>
                                 </div>

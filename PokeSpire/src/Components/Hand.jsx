@@ -46,7 +46,7 @@ function Hand({ update, changeStateFunc, deck, game, pokemon, map, openVictoryMo
 							}, 2000);
 						}}
 					>
-						<img src="../src/assets/keyboard_double_arrow_right_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg" alt="" srcset="" />
+						<img src="/keyboard_double_arrow_right_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg" alt="" srcset="" />
 					</div>
 				</div>
 				<div className="deck row">{hand}</div>

@@ -53,7 +53,7 @@ function Store({ changeStateFunc, player, deck }) {
                 <div className="store-bg-div">
                     <div className="store-div row justify-content-evenly">
                         <div className="store-title desc-cadeaux row col-2">
-                            {balance} <img src="../src/assets/coins.png" alt="" className="" />
+                            {balance} <img src="/coins.png" alt="" className="" />
                         </div>
                         <div className="row-div row col-8">
                             <div className="store-cards row col-12" onClick={() => { setBalance(player.gold) }}>{inv[0]}</div>

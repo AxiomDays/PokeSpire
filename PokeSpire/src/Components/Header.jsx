@@ -31,7 +31,7 @@ function Header({ text = "blood drain again", changeStateFunc, player, deck, png
                 <div className="visual-row">
                     <div className="row col-6">
                         <div className="header-gold-display row col-2">
-                            {gold} <img src="../src/assets/coins.png" alt="" className="" />
+                            {gold} <img src="/coins.png" alt="" className="" />
                         </div>
                         <span className="start-button-index col me-3" id="header-deck-btn" onClick={() => { openDeck() }}><span>DECK</span></span>
                         <span className="start-button-index col" id="header-deck-btn" onClick={() => { openRel() }}><span>RELICS</span></span>

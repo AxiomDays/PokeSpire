@@ -11,7 +11,7 @@
     margin: 4rem;
     border: black solid 2px;
     background-size: cover;
-    background-image: url("../src/assets/symbol-scatter-haikei.png");
+    background-image: url("/symbol-scatter-haikei.png");
 }
 
 .store-div {
