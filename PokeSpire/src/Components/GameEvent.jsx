@@ -83,7 +83,6 @@ function GameEvent({ changeStateFunc, player, deck, game, event, isPokeCenter, i
                     break
                 case "reward":
                     rewardGet(option[1])
-                    alert(`Obtained ${skillNametoMoveName(option[1].skill)}`)
 
                     break
                 case "buff":
