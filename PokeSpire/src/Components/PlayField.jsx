@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
 import "./PlayField.css";
-import Hand from "./Hand";
 
 // function dataVisibleChange(){
 // 		let hpPercentage = (HP/MaxHP)*100

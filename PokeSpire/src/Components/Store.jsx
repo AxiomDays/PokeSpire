@@ -5,8 +5,6 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
 import "./Store.css";
 import CadeuxReward from "./CadeuxReward";
-import Decklist from "./Decklist";
-import { useEffect } from "react";
 
 function Store({ changeStateFunc, player, deck }) {
     const [purchased, isPurchased] = useState([])

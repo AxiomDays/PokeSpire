@@ -4,10 +4,8 @@ import { mapGenerator } from "../../data"
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
 import "./Index.css";
-import CadeuxReward from "./CadeuxReward";
-import Decklist from "./Decklist";
 import { useEffect } from "react";
-import { getRandomNumber } from "../../models";
+
 
 function Index({ changeStateFunc, generate, png, typePNG, apiLoading, player, currMap, setCurrMap }) {
     const [count, setCount] = useState(0);

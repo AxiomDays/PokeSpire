@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
 import { GameController, Player, Deck, Enem, getRandomNumber, cardGenerator } from "../models.js";
-import { EventObject, Map_Class, Scenario } from "../map.js";
+import { EventObject, Map_Class } from "../map.js";
 import { mapGenerator } from "../data.js";
 import { constructPlayer, constructDeck } from "../api.js";
 import "./Landing.css";

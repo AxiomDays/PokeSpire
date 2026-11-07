@@ -3,7 +3,6 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
 import "./Hand.css";
 import Cadeux from "./Cadeux";
-import { Card } from "/Users/tobirama/Documents/GitHub/PokeSpire/PokeSpire/models.js";
 
 function Hand({ update, changeStateFunc, deck, game, pokemon, map, openVictoryModal, setTurnCounter }) {
 	const [drawCount, setDrawCount] = useState(0);

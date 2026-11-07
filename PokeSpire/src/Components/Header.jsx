@@ -4,7 +4,6 @@ import "bootstrap/dist/js/bootstrap.js";
 import "./Header.css";
 import Decklist from "./Decklist";
 import { useEffect } from "react";
-import MetroCard from "./MetroCard";
 
 function Header({ text = "blood drain again", changeStateFunc, player, deck, png, typePNG
 }) {

@@ -2,7 +2,6 @@ import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
 import "./Home.css";
-import CadeuxReward from "./CadeuxReward";
 import Decklist from "./Decklist";
 import { useEffect } from "react";
 import PlayerStatBar from "./PlayerStatBar";
