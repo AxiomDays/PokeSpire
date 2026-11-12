@@ -185,8 +185,8 @@ function Map({ changeStateFunc, map, player, deck, game, png, typePNG, gamestart
 				</div>
 				<div className="row justify-content-center pt-0 mt-0">
 					<div className="start-button-index col-3" id="download-btn" onClick={() => { dlImage() }}><span>SAVE</span></div>
-					<div className="start-button-index col-3" id="download-btn" ><span><a href="https://forms.gle/KQ8f6LnnzC5rMEhv5">SAVE</a></span></div>
-				</div>
+					<div className="start-button-index col-3" id="download-btn" ><span><a href="https://forms.gle/KQ8f6LnnzC5rMEhv5">REVIEW</a></span></div>
+				</div >
 			</>
 		)
 	}
@@ -198,7 +198,7 @@ function Map({ changeStateFunc, map, player, deck, game, png, typePNG, gamestart
 			<div className="event-map p-0 row">
 				<h2 className="choice-group-title col-12">{stage == map.len ? "Victory" : "Choose Your Path"}</h2>
 				<div className="choice-group col-12 row">
-					{stage == map.len ? victoryScreen() : createMap()}
+					{stage == map.len ? victoryScreen() : victoryScreen()}
 				</div>
 
 

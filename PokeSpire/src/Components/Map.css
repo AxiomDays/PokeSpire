@@ -162,6 +162,11 @@
     fill: #000;
 }
 
+#download-btn span a {
+    text-decoration: none;
+    color: black;
+}
+
 #sunny {
     background-color: orange;
 }
