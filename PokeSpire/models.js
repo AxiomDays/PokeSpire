@@ -931,7 +931,7 @@ export class Unit {
 
 		console.log(this.name + " healed for " + Math.round(value));
 		if (output != undefined) {
-			output.innerHTML += this.name + " healed for " + Math.round(value) + "<br/>";
+			say(this.name, (" healed for " + Math.round(value) + ""))
 		}
 
 		this.doEffect()
@@ -950,8 +950,7 @@ export class Unit {
 		}
 		this.OHP += Math.round(value);
 		console.log(this.name + " gained " + Math.round(value) + " shield");
-		output.innerHTML += this.name + " gained " + Math.round(value) + " shield" + "<br/>";
-
+		say(this.name, (" gained " + Math.round(value) + " shield"))
 		this.doEffect()
 	}
 
@@ -1029,8 +1028,7 @@ export class Unit {
 		}
 		this.takeEffect()
 		console.log(this.name + " took " + Math.round(value) + " damage");
-		output.innerHTML += this.name + " took " + Math.round(value) + " damage" + "<br/>";
-
+		say(this.name, (" took " + Math.round(value) + " damage"))
 		return "thorn_trigger";
 	}
 
@@ -2030,7 +2028,7 @@ function cardDescription(type, value, defValue) {
 		case "ground3":
 			return `Gain ${defValue * 2} Shields. Deal a high variable amount of damage.`;
 		case "psychic":
-			return `Deals ${Math.round(value / 2)} damage to target. Apply 2 Vulnerable`;
+			return `Deals ${Math.round(value / 2)} damage to target. Apply 1 Vulnerable`;
 		case "psychic2":
 			return `Gain ${defValue * 2} Shield. \n Discard: Foresees an attack a turn later. Deals ${Math.round(2.5 * value)} damage to target.`;
 		case "psychic3":

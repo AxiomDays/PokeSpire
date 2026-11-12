@@ -188,7 +188,10 @@ function PlayField({
 		<>
 			<div className="container-fluid p-0">
 				<div className="play-field row d-flex justify-content-center">
-					<div className="match-condition col-2" ><span id="banner">WEATHER IS CURRENTLY {weather.toUpperCase()}</span></div>
+					<div className="match-condition col-1" id={weather} ><span id="banner">{weather && weather != "clear" ?
+						<span className="weather-icon-playfield tooltipteststatus" id={weather}>
+							<img src={"/icons/weather/" + weather + ".png"} alt="" srcset="" />
+							<span className="tooltipstatus">It is currently {weather.toUpperCase()}</span></span> : <></>}</span></div>
 					<div className="play-pen col-12 row">
 						<div className="left-player col-4 row">
 							<div className={glimmerVar ? "posse arithmetica col-2" : "arithmetica col-2"} title="Click for Evo Move window." onClick={() => { setPosseModal(true) }}>{pMana == NaN ? 0 : pMana}</div>

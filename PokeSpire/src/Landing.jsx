@@ -18,7 +18,7 @@ function Landing() {
 	const [comb, setComb] = useState(3);
 	const [phase, setPhase] = useState(null);
 	const [pokemonGenerated, setPokemonGenerated] = useState(false);
-	const [currMap, setCurrMap] = useState(() => new Map_Class(mapGenerator(5)));
+	const [currMap, setCurrMap] = useState(() => new Map_Class(mapGenerator(2)));
 	const [pokemon, setPokemon] = useState(() => new Player())
 	const [deck, setDeck] = useState(() => new Deck([]))
 	const [enem, setEnem] = useState(() => new Enem())

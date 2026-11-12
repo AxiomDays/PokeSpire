@@ -185,6 +185,7 @@ function Map({ changeStateFunc, map, player, deck, game, png, typePNG, gamestart
 				</div>
 				<div className="row justify-content-center pt-0 mt-0">
 					<div className="start-button-index col-3" id="download-btn" onClick={() => { dlImage() }}><span>SAVE</span></div>
+					<div className="start-button-index col-3" id="download-btn" ><span><a href="https://forms.gle/KQ8f6LnnzC5rMEhv5">SAVE</a></span></div>
 				</div>
 			</>
 		)

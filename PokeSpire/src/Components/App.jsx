@@ -31,6 +31,8 @@ function App({ changeStateFunc, pokemon, deck, weather, game, map, turncounter }
 	const [fightReward, setFightReward] = useState(generateRewardCard())
 	const [surpriseCardGenerated, setSuprise] = useState(false)
 	const [posseUse, setPosseUse] = useState(0)
+	const [goldReward, setGoldreward] = useState(0)
+	let gReward = 100
 
 	function updateVals() {
 		setpName(game.player.name);
@@ -99,10 +101,12 @@ function App({ changeStateFunc, pokemon, deck, weather, game, map, turncounter }
 	const openVictoryModal = (overK = false, loss = false) => {
 		if (!loss) {
 			isVictoryModal(true)
+			gReward = 100
 		} else {
 			isLossModal(true)
 		}
 		if (overK) {
+			gReward = 200
 			setOverKill(true)
 		}
 	}
@@ -115,6 +119,8 @@ function App({ changeStateFunc, pokemon, deck, weather, game, map, turncounter }
 		setTimeout(() => {
 			isVictoryModal(false)
 			setOverKill(false)
+			setGoldreward(gReward * (Math.round(getRandomNumber(4, 10) / 5)))
+			pokemon.gold += goldReward
 			progress()
 		}, 300);
 	}

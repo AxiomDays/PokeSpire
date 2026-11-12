@@ -4,7 +4,6 @@ import { Enem, EnemySkill, player, GameStart, Relic, randomProperty, takeRandomF
 
 
 export const rewards = [
-
     cardGenerator("superpotion"),
     cardGenerator("fullrestore"),
     cardGenerator("elixir"),
@@ -15,6 +14,9 @@ export const rewards = [
     relicGenerator("Sitrus Berry"),
     relicGenerator("Cheri Berry"),
     relicGenerator("Custap Berry"),
+    relicGenerator("Shell Bell"),
+    relicGenerator("Berserk Gene"),
+    relicGenerator("Leftovers"),
 ]
 
 export const cursedRewards = [
@@ -225,7 +227,7 @@ export const fixedEventList = {
 
 export function mapGenerator(length, line = "standard") {
     let map = []
-    map.push([new Scenario("event", eventList["teamRocketAmbush"])])
+    map.push([new Scenario("event", fixedEventList["beginning"])])
     for (let i = 0; i <= length; i++) {
         if (i % 3 == 0 && i != 0) {
             map.push(segmentGenerator(getRandomNumber(2, 4), 0, line, i, length))
