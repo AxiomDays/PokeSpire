@@ -198,7 +198,7 @@ function Map({ changeStateFunc, map, player, deck, game, png, typePNG, gamestart
 			<div className="event-map p-0 row">
 				<h2 className="choice-group-title col-12">{stage == map.len ? "Victory" : "Choose Your Path"}</h2>
 				<div className="choice-group col-12 row">
-					{stage == map.len ? victoryScreen() : victoryScreen()}
+					{stage == map.len ? victoryScreen() : createMap()}
 				</div>
 
 

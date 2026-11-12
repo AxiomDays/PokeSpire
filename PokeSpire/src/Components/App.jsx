@@ -31,7 +31,7 @@ function App({ changeStateFunc, pokemon, deck, weather, game, map, turncounter }
 	const [fightReward, setFightReward] = useState(generateRewardCard())
 	const [surpriseCardGenerated, setSuprise] = useState(false)
 	const [posseUse, setPosseUse] = useState(0)
-	const [goldReward, setGoldreward] = useState(0)
+	const [goldReward, setGoldreward] = useState(100)
 	let gReward = 100
 
 	function updateVals() {
